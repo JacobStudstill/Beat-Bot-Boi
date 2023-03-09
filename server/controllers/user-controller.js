@@ -29,7 +29,30 @@ const userController = {
     res.status(500).json(err)
   }
 },
+// Create a new user
+async createUser(req, res) {
+  try {
+    const user = await User.create(req.body)
+      res.json(user);
+  } catch (err){
+    res.status(500).json(err);
+  } 
 
+},
+// Delete a user and associated posts
+async deleteUser(req, res) {
+  try {
+    const user = await User.findOneAndDelete({ _id: req.params.userId })
+      await Post.deleteMany({ _id: {$in: user.posts} });
+      if (!user) {
+        return res.status(404).json({message: 'No user with that ID :('})
+    }
+      res.json({message: 'User and posts deleted!'})
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  } 
+},
 
 
 }

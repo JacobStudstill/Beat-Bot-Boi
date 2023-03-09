@@ -1,4 +1,4 @@
-const { Schema, Types } = require('mongoose');
+const { Schema, Types, model } = require('mongoose');
 const { use } = require('../routes');
 const commentSchema = require('./Comment');
 const replySchema = require('./Reply');
@@ -8,7 +8,7 @@ const userSchema = new Schema({
     email: { type: String, required: true },
     password: { type: String, required: true },
     posts: { type: [String], ref: "Posts" },
-    friends: { type: [Schema.Types.ObjectId], ref: "User" },
+    friends: { type: [Types.ObjectId], ref: "User" },
     comments: [commentSchema, replySchema]
 },
     {
@@ -23,4 +23,5 @@ userSchema.virtual('userCommentCount').get(function () {
     return this.comments.length
 });
 
-module.exports = userSchema;
+const Users = model('Users', userSchema)
+module.exports = Users;

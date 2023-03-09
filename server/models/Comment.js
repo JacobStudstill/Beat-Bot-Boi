@@ -1,8 +1,8 @@
-const { Schema, Types } = require('mongoose');
+const { Schema, Types, model } = require('mongoose');
 const replySchema = require('./Reply')
 
 const commentSchema = new Schema({
-    commentId: { type: Schema.Types.ObjectId, default: () => new Types.ObjectId() },
+    commentId: { type: Types.ObjectId, default: () => new Types.ObjectId() },
     commentBody: { type: String, required: true, maxLength: 500 },
     username: { type: String, required: true },
     createdAt: { type: Date, default: () => Date.now },
@@ -22,4 +22,5 @@ commentSchema.virtual('replyCount').get(function () {
     return this.replies.length
 });
 
-module.exports = commentSchema;
+const Comments = model('Comments', commentSchema)
+module.exports = Comments;

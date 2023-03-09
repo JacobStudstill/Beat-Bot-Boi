@@ -1,4 +1,4 @@
-const { Schema, Types } = require('mongoose');
+const { Schema, model } = require('mongoose');
 const commentSchema = require('./Comment')
 
 const postSchema = new Schema({
@@ -21,4 +21,5 @@ postSchema.virtual('commentCount').get(function () {
     return this.comments.length
 });
 
-module.exports = postSchema;
+const Posts = model('Posts', postSchema)
+module.exports = Posts;

@@ -25,4 +25,34 @@ const postController = {
       res.status(500).json(err)
     }
 },
+// create a new post
+async createPost(req, res) {
+  try {
+    const post = await Post.create(req.body) 
+    await User.findOneAndUpdate(
+      {_id: req.body.userId}, 
+      {$push: {posts: post._id}}, 
+      {new: true});
+    res.json(post);
+
+  }catch(err) {
+    console.error(err)
+    res.status(500).json(err);
+  }
+},
+
+// delete a post
+async deletePost(req, res) {
+  try {
+    const post = await Post.findOneAndDelete({ _id: req.params.postId })
+    await User.findOneAndUpdate(
+      {_id: req.body.userId}, 
+      {$pull: {posts: post._id}}, 
+      {new: true});
+  res.json(post); 
+  } catch(err) {
+    res.status(500).json(err);
+  }
+},
+
 }

@@ -92,7 +92,6 @@ async deleteFriend(req, res) {
     res.status(500).json(err);
     }
   }
-
 }
 
 module.exports = userController;

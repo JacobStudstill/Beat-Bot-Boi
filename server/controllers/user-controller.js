@@ -53,7 +53,45 @@ async deleteUser(req, res) {
     res.status(500).json(err);
   } 
 },
-
+// Update a user
+async updateUser(req, res) {
+  try {
+    const user = await User.findOneAndUpdate( 
+      req.body, 
+      { _id: req.params.userId }, 
+      {new: true, runValidators: true });
+    res.json({message: 'User updated'});
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  } 
+},
+// Add friend to friend list
+async addFriend(req, res) {
+  try {
+    const user = await User.findOneAndUpdate(
+      { _id: req.params.userId }, 
+      {$addToSet: { friends: req.params.friendId }}, 
+      {new: true});
+    res.json(user);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json(err);
+    } 
+},
+// Delete friend from list
+async deleteFriend(req, res) {
+  try {
+    const user = await User.findOneAndUpdate(
+      { _id: req.params.userId }, 
+      {$pull: { friends: req.params.friendId }},
+      {new: true});
+      res.json(user, {message: 'Friend deleted :('})
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+    }
+  }
 
 }
 

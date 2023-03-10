@@ -1,12 +1,12 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 const commentSchema = require('./Comment')
 
 const replySchema = new Schema({
     replyText: { type: String, required: true, minLength: 1, maxLength: 500 },
     createdAt: { type: Date, default: () => Date.now() },
     username: { type: String, required: true },
-    comment: [commentSchema],
-    replies: [replySchema],
+    comment: { type: Schema.Types.ObjectId, ref: 'Comments' },
+    // replies: [replySchema],
     upvotes: {type: Number, required: true},
     downvotes: {type: Number, required: true} 
 },
@@ -18,5 +18,5 @@ const replySchema = new Schema({
     }
 );
 
-const Replies = model('Replies', replySchema)
-module.exports = Replies;
+// const Replies = model('Replies', replySchema)
+module.exports = replySchema;

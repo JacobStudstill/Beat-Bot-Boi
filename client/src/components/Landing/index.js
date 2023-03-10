@@ -3,6 +3,7 @@ import background from "../../assets/background.gif"
 
 const Landing = () => {
   return (
+
     <>
       <div className='flex-container'>
         <div className='flex-item flex-1'></div>
@@ -16,6 +17,7 @@ const Landing = () => {
         <div className='flex-item flex-9'></div>
       </div>
     </>
+
   );
 };
 

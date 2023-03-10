@@ -1,14 +1,14 @@
-const { Reply } = require('../models');
+const { Post } = require('../models');
 
 const replyController = {
   // Create a new reply
   async addReply(req, res) {
     try {
-      const comment = await Comment.findOneAndUpdate(
+      const post = await Post.findOneAndUpdate(
         { _id: req.params.commentId }, 
         {$addToSet: { replies: req.body }}, 
         {new: true, runValidators: true });
-      res.json(comment);
+      res.json(post);
     } catch(err) {
       console.error(err)
       res.status(500).json(err);

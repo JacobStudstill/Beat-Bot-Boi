@@ -9,8 +9,8 @@ const postSchema = new Schema({
     username: { type: String, required: true },
     comments: [commentSchema],
     tags:{ type: [String], required: true },
-    upvotes: { type: [String]},
-    downvotes: { type: [String]},
+    upvotes: { type: [String] },
+    downvotes: { type: [String] },
     createdAt: { type: Date, default: () => Date.now() }
 },
     {
@@ -33,5 +33,5 @@ postSchema.virtual('commentCount').get(function () {
     return this.comments.length;
 });
 
-const Posts = model('Posts', postSchema)
-module.exports = Posts;
+const Post = model('Post', postSchema)
+module.exports = Post;

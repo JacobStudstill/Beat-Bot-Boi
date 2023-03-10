@@ -12,8 +12,9 @@ const userSchema = new Schema({
         message: props => `${props.value} is not a valid email address!`
     }, },
     password: { type: String, required: true },
-    posts: { type: [String], ref: "Post" },
+    posts: { type: [Types.ObjectId], ref: "Post" },
     friends: { type: [Types.ObjectId], ref: "User" },
+    // subs: { type: [Types.ObjectId], ref: "Sub" },
     comments: [commentSchema, replySchema]
 },
     {

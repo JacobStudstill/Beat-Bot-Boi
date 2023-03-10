@@ -1,14 +1,8 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
-const db = require('../config/connection.js');
 
 async function seed() {
   try {
-    //wait for the database to connect
-    await db.once('open', () => {
-      console.log('Database connected');
-    });
-
     //placeholder users
     const users = [
       {
@@ -26,6 +20,7 @@ async function seed() {
         friends: '640b89e26b1b58e1217dee3f',
       },
       {
+        _id: '640bb8526ac6b6efea8a41f4',
         username: 'dobbytest',
         email: 'dobby@email.com',
         password: 'Pass@123',
@@ -40,13 +35,9 @@ async function seed() {
     //creates users in DB
     await User.create(users);
     console.log('Users seeded');
-
-    //disconnect from the database
-    await db.close();
-    console.log('Database disconnected');
   } catch (error) {
     console.error(error);
   }
 }
 
-seed();
+module.exports = {seed};

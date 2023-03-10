@@ -4,7 +4,7 @@ const Landing = () => {
   return (
 
       <div >
-        <h4>Beat Bots</h4>
+        <h4>Landing Page</h4>
       </div>
     
   );

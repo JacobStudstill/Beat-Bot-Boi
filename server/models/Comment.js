@@ -22,5 +22,5 @@ commentSchema.virtual('replyCount').get(function () {
     return this.replies.length;
 });
 
-// const Comments = model('Comments', commentSchema)
+// const Comment = model('Comment', commentSchema)
 module.exports = commentSchema;

@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import Signup from './components/Signup';
 import React from 'react';
+import Landing from './components/Landing';
 // import Footer from './components/Footer';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     <div>
       <Header />
       <Signup />
+      <Landing />
     </div>
   );
 }

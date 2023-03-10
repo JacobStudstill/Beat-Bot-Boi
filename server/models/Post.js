@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const commentSchema = require('./Comment')
+const commentSchema = require('./Comment');
 
 const postSchema = new Schema({
     postText: { type: String, required: true, minLength: 1, maxLength: 1000 },
@@ -18,7 +18,7 @@ const postSchema = new Schema({
 );
 
 postSchema.virtual('commentCount').get(function () {
-    return this.comments.length
+    return this.comments.length;
 });
 
 const Posts = model('Posts', postSchema)

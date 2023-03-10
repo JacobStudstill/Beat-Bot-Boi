@@ -6,8 +6,8 @@ const postSchema = new Schema({
     createdAt: { type: Date, default: () => Date.now() },
     username: { type: String, required: true },
     comments: [commentSchema],
-    upvotes: {type: Number, required: true},
-    downvotes: {type: Number, required: true} 
+    upvotes: {type: Number},
+    downvotes: {type: Number} 
 },
     {
         toJSON: {

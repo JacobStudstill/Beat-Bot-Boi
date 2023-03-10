@@ -15,7 +15,9 @@ const replyRoutes = require('./replyRoutes');
 router.route('/').get(getPosts).post(createPost);
 
 // /api/posts/:id
-router.route('/:postId').get(getPostById).put(updatePost).delete(deletePost);
+router.route('/:postId').get(getPostById)
+// .put(updatePost)
+.delete(deletePost);
 
 // /api/posts/:postId/comments
 router.route('/:postId/comments').post(addComment)

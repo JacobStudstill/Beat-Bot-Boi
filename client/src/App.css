@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.homeBody {
+  display: flex;
+  justify-content: center;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  border-top: none;
+  border-bottom: none;
+  border-right: solid black 1px;
+  border-left: solid black 1px;
+
+}

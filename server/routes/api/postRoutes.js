@@ -16,9 +16,9 @@ router.route('/').get(getPosts).post(createPost);
 router.route('/:postId').get(getPostById).put(updatePost).delete(deletePost);
 
 // /api/posts/:postId/comments
-router.route('/:posttId/comments').post(addComment)
+router.route('/:postId/comments').post(addComment)
 
 // /api/posts/:postId/comments
-  router.route('/:postId/comments/:commentId').delete(deleteComment)
+router.route('/:postId/comments/:commentId').delete(deleteComment)
 
 module.exports = router;

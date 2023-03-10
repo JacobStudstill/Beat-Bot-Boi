@@ -1,5 +1,4 @@
 import React from 'react';
-import background from "../../assets/background.gif"
 
 const Landing = () => {
   return (

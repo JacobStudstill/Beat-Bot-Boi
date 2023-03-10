@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Profile from './components/Profile';
 import Landing from './components/Landing';
 import React from 'react';
+import './App.css';
 
 
 function App() {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MainFeed = () => {
+const Landing = () => {
   return (
 
       <div >
@@ -10,4 +10,4 @@ const MainFeed = () => {
   );
 };
 
-export default MainFeed;
+export default Landing;

@@ -213,3 +213,18 @@
     transform: rotate(360deg);
   }
 }
+
+.homeBody {
+  display: flex;
+  justify-content: center;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  border-top: none;
+  border-bottom: none;
+  border-right: solid grey 1px;
+  border-left: solid grey 1px;
+  width: 650px;
+}

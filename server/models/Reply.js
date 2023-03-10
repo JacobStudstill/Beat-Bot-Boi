@@ -5,10 +5,9 @@ const replySchema = new Schema({
     replyText: { type: String, required: true, minLength: 1, maxLength: 500 },
     createdAt: { type: Date, default: () => Date.now() },
     username: { type: String, required: true },
-    comment: { type: Schema.Types.ObjectId, ref: 'Comments' },
     // replies: [replySchema],
-    upvotes: {type: Number, required: true},
-    downvotes: {type: Number, required: true} 
+    upvotes: {type: Number},
+    downvotes: {type: Number} 
 },
     {
         toJSON: {

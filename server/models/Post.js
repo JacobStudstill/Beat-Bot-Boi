@@ -6,8 +6,8 @@ const postSchema = new Schema({
     createdAt: { type: Date, default: () => Date.now() },
     username: { type: String, required: true },
     comments: [commentSchema],
-    upvotes: {type: Number, required: true},
-    downvotes: {type: Number, required: true} 
+    upvotes: {type: Number},
+    downvotes: {type: Number} 
 },
     {
         toJSON: {
@@ -21,5 +21,5 @@ postSchema.virtual('commentCount').get(function () {
     return this.comments.length;
 });
 
-const Posts = model('Posts', postSchema)
-module.exports = Posts;
+const Post = model('Post', postSchema)
+module.exports = Post;

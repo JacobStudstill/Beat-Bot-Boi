@@ -10,7 +10,7 @@ import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 
-export default function MediaControlCard() {
+export default function Home() {
   const theme = useTheme();
 
   return (

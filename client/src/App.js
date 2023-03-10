@@ -1,5 +1,4 @@
-// import logo from './logo.svg';
-import './App.css';
+import {Routes, Route} from 'react-router'
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Signup from './components/Signup';
@@ -7,7 +6,8 @@ import Home from './components/Home';
 import Profile from './components/Profile';
 import Landing from './components/Landing';
 import React from 'react';
-import {Route, Routes} from 'react-router';
+import './App.css';
+
 
 function App() {
   return (

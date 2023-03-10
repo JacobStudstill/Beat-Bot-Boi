@@ -7,6 +7,183 @@
   pointer-events: none;
 }
 
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height:80vh;
+  background-color:rgb(36, 35, 35);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: .8%;
+  padding-bottom: .8%;
+}
+
+
+.flex-item {
+  width: 27vw;
+  height: 20vh;
+  background-color: #ddd;
+  margin: .1% 1.5% 0 0;
+}
+
+.flex-1 {
+  background-image: url(./assets/country2.png);
+  background-repeat:no-repeat;
+  background-position: center;
+  background-size:auto;
+  background-color: #81403f;
+  opacity: 80%;
+  border-radius: 10px;
+}
+
+.flex-1:hover {
+  opacity: 100%;
+}
+
+.flex-2 {
+  background-image: url(./assets/jazz2.png);
+  background-repeat:no-repeat;
+  background-position: center;
+  background-size:auto;
+  background-color: #735982;
+  opacity: 80%;
+  border-radius: 10px;
+}
+
+.flex-2:hover {
+  opacity: 100%;
+}
+
+.flex-3 {
+  background-image: url(./assets/electronic2.png);
+  background-repeat:no-repeat;
+  background-position: center;
+  background-size:auto;
+  background-color: #aa6b38;
+  opacity: 80%;
+  border-radius: 10px;
+}
+
+.flex-3:hover {
+  opacity: 100%;
+}
+
+.flex-4 {
+  background-image: url(./assets/r&b2.png);
+  background-repeat:no-repeat;
+  background-position: center;
+  background-size:auto;
+  background-color: #93aa5c;
+  opacity: 80%;
+  border-radius: 10px;
+}
+
+.flex-4:hover {
+  opacity: 100%;
+}
+
+.flex-5 {
+  background-image: url(./assets/rap2.png);
+  background-repeat:no-repeat;
+  background-position: center;
+  background-size:auto;
+  background-color: #5e6a80;
+  opacity: 80%;
+  border-radius: 10px;
+}
+
+.flex-5:hover {
+  opacity: 100%;
+}
+
+.flex-6 {
+  background-image: url(./assets/pop2.png);
+  background-repeat:no-repeat;
+  background-position: center;
+  background-size:auto;
+  background-color: #adad36;
+  opacity: 80%;
+  border-radius: 10px;
+}
+
+.flex-6:hover {
+  opacity: 100%;
+}
+
+.flex-7 {
+  background-image: url(./assets/90s2.png);
+  background-repeat:no-repeat;
+  background-position: center;
+  background-size:auto;
+  background-color: #9b647e;
+  opacity: 80%;
+  border-radius: 10px;
+}
+
+.flex-7:hover {
+  opacity: 100%;
+}
+
+.flex-8 {
+  background-image: url(./assets/rock2.png);
+  background-repeat:no-repeat;
+  background-position: center;
+  background-size:auto;
+  background-color: #3fa276;
+  opacity: 80%;
+  border-radius: 10px;
+}
+
+.flex-8:hover {
+  opacity: 100%;
+}
+
+.flex-9 {
+  background-image: url(./assets/metal2.png);
+  background-repeat:no-repeat;
+  background-position: center;
+  background-size:auto;
+  background-color: #725682;
+  opacity: 80%;
+  border-radius: 10px;
+}
+
+.flex-9:hover {
+  opacity: 100%;
+}
+
+
+
+
+@media (max-width: 600px) {
+  .flex-item {
+    width: 30%;
+    height: 30%;
+    margin: 2% 10%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -35,4 +212,19 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.homeBody {
+  display: flex;
+  justify-content: center;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  border-top: none;
+  border-bottom: none;
+  border-right: solid grey 1px;
+  border-left: solid grey 1px;
+  width: 650px;
 }

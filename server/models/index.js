@@ -1,6 +1,6 @@
 const Comments = require('./Comment')
 const Posts = require('./Post')
 const Replies = require('./Reply')
-const Users = require('./User')
+const User = require('./User')
 
-module.exports = { Comments, Posts, Replies, Users }
+module.exports = { Comments, Posts, Replies, User }

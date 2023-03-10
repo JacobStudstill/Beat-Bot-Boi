@@ -1,5 +1,5 @@
 const { Schema, Types, model } = require('mongoose');
-const { use } = require('../routes');
+// const { use } = require('../routes');
 const commentSchema = require('./Comment');
 const replySchema = require('./Reply');
 
@@ -13,7 +13,7 @@ const userSchema = new Schema({
     }, },
     password: { type: String, required: true },
     posts: { type: [String], ref: "Posts" },
-    friends: { type: [Types.ObjectId], ref: "User" },
+    friends: { type: [Types.ObjectId], ref: "Users" },
     comments: [commentSchema, replySchema]
 },
     {
@@ -28,5 +28,5 @@ userSchema.virtual('userCommentCount').get(function () {
     return this.comments.length
 });
 
-const Users = model('Users', userSchema)
-module.exports = Users;
+const User = model('User', userSchema)
+module.exports = User;

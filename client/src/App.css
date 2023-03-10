@@ -227,14 +227,19 @@
   border-right: solid grey 1px;
   border-left: solid grey 1px;
   width: 650px;
+  margin: auto;
+  /* position: absolute; */
 }
 
 .linksContainer {
   display: flex;
   flex-direction: column;
-  width: 100px;
+  width: 150px;
+  /* margin-right: auto; */
+  
 }
 
 .links {
   margin-bottom: 25px;
+  margin-left: 100px;
 }

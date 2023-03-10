@@ -228,3 +228,13 @@
   border-left: solid grey 1px;
   width: 650px;
 }
+
+.linksContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+}
+
+.links {
+  margin-bottom: 25px;
+}

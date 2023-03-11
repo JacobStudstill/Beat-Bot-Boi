@@ -6,7 +6,7 @@ const commentSchema = new Schema({
     commentBody: { type: String, required: true, maxLength: 500 },
     username: { type: String, required: true },
     createdAt: { type: Date, default: Date.now },
-    replies: [replySchema],
+    // replies: [replySchema],
     upvotes: {type: Number},
     downvotes: {type: Number} 
 },
@@ -18,9 +18,9 @@ const commentSchema = new Schema({
     }
 );
 
-commentSchema.virtual('replyCount').get(function () {
-    return this.replies.length;
-});
+// commentSchema.virtual('replyCount').get(function () {
+//     return this.replies.length;
+// });
 
 // const Comment = model('Comment', commentSchema)
 module.exports = commentSchema;

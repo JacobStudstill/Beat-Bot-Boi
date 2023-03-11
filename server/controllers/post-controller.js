@@ -71,8 +71,8 @@ async addComment(req, res) {
 async deleteComment(req, res) {
   try {
     const post = await Post.findOneAndUpdate(
-      { _id: req.params.PostId }, 
-      {$pull: { comments: req.params.commentId }}, 
+      { _id: req.params.postId }, 
+      {$pull: { comments: {_id: req.params.commentId} }}, 
       {new: true, runValidators: true});
     res.json({message: 'Comment deleted!'});
   }catch(err){

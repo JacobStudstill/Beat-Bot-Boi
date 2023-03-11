@@ -5,6 +5,7 @@ const replySchema = new Schema({
     replyText: { type: String, required: true, minLength: 1, maxLength: 500 },
     createdAt: { type: Date, default: () => Date.now() },
     username: { type: String, required: true },
+    commentId: { type: Types.ObjectId },
     // replies: [replySchema],
     upvotes: {type: Number},
     downvotes: {type: Number} 

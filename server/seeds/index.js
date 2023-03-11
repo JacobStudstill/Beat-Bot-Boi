@@ -14,8 +14,7 @@ async function seed() {
     //calls the seed functions for each model
     await User.seed();
     await Post.seed();
-    // await Comment.seed();
-    // await Reply.seed();
+    await Comment.seed();
 
     //disconnects from the database
     await db.close();

@@ -5,8 +5,8 @@ const replyController = {
   async addReply(req, res) {
     try {
       const post = await Post.findOneAndUpdate(
-        { _id: req.params.commentId }, 
-        {$addToSet: { replies: req.body }}, 
+        { _id: req.params.postId }, 
+        {$addToSet: { replies: {...req.body, commentId: req.params.commentId} }}, 
         {new: true, runValidators: true });
       res.json(post);
     } catch(err) {
@@ -51,8 +51,8 @@ const replyController = {
   // Delete an existing reply
   async deleteReply(req, res) {
     try {
-      const comment = await Comment.findOneAndUpdate(
-        { _id: req.params.commentId }, 
+      const post = await Post.findOneAndUpdate(
+        { _id: req.params.postId }, 
         {$pull: { replies: req.params.replyId }}, 
         {new: true, runValidators: true});
       res.json({message: 'Reply deleted!'});

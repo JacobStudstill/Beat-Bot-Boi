@@ -1,14 +1,13 @@
 const { Schema, Types, model } = require('mongoose');
-const replySchema = require('./Reply')
 
 const commentSchema = new Schema({
-    commentId: { type: Types.ObjectId, default: () => new Types.ObjectId},
+    parentId: { type: String, required: true},
     commentBody: { type: String, required: true, maxLength: 500 },
     username: { type: String, required: true },
-    createdAt: { type: Date, default: Date.now },
-    // replies: [replySchema],
     upvotes: {type: Number},
-    downvotes: {type: Number} 
+    downvotes: {type: Number},
+    comments: { type: [String] },
+    createdAt: { type: Date, default: Date.now }, 
 },
     {
         toJSON: {
@@ -18,9 +17,5 @@ const commentSchema = new Schema({
     }
 );
 
-// commentSchema.virtual('replyCount').get(function () {
-//     return this.replies.length;
-// });
-
-// const Comment = model('Comment', commentSchema)
-module.exports = commentSchema;
+const Comment = model('Comment', commentSchema)
+module.exports = Comment;

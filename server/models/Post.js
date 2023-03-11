@@ -8,8 +8,7 @@ const postSchema = new Schema({
     postText: { type: String, validate: postValidate},
     // sub: { type: [Types.ObjectId], ref: "Sub" }, or add post _id to Sub determine later
     username: { type: String, required: true },
-    comments: [commentSchema],
-    replies: [replySchema],
+    comments: { type: [String] },
     tags:{ type: [String], required: true },
     upvotes: { type: [String] },
     downvotes: { type: [String] },

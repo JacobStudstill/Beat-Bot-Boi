@@ -15,7 +15,7 @@ const userSchema = new Schema({
     posts: { type: [Types.ObjectId], ref: "Post" },
     friends: { type: [Types.ObjectId], ref: "User" },
     // subs: { type: [Types.ObjectId], ref: "Sub" },
-    comments: [commentSchema, replySchema]
+    comments: { type: [Types.ObjectId], ref: "Comment" }
 },
     {
         toJSON: {

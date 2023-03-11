@@ -7,6 +7,7 @@ const {
   deletePost,
   addComment, 
   deleteComment,
+  vote,
 } = require('../../controllers/post-controller.js');
 
 // const replyRoutes = require('./replyRoutes');
@@ -24,6 +25,9 @@ router.route('/:postId/comments').post(addComment)
 
 // /api/posts/:postId/comments
 router.route('/:postId/comments/:commentId').delete(deleteComment)
+
+// api/posts/:postId/vote/voteType
+router.route('/:postId/vote/:voteType').put(vote)
 
 
 

@@ -1,6 +1,5 @@
 const Comment = require('./comment');
 const Post = require('./post');
-const Reply = require('./reply');
 const User = require('./user');
 const db = require('../config/connection');
 

@@ -75,10 +75,13 @@ async addFriend(req, res) {
       { _id: req.params.userId }, 
       {$addToSet: { friends: req.params.friendId }}, 
       {new: true});
-      const friend = await User.findOneAndUpdate(
-        { _id: req.params.friendId }, 
-        {$addToSet: { friends: req.params.userId }}, 
-        {new: true});
+
+      // do we want friends to be added automatically or have to accept/follow back?
+      // const friend = await User.findOneAndUpdate(
+      //   { _id: req.params.friendId }, 
+      //   {$addToSet: { friends: req.params.userId }}, 
+      //   {new: true});
+      
     res.json(user);
     
     } catch (err) {

@@ -16,6 +16,14 @@ export default function Home() {
   return (
     <>
       <div className='homeBody'>
+        <div className="linksContainer">
+          <a className='links' href="url">link #1</a>
+          <a className='links' href="url">link #2</a>
+          <a className='links' href="url">link #3</a>
+          <a className='links' href="url">link #4</a>
+          <a className='links' href="url">link #5</a>
+        </div>
+
         <div className='cardContainer'>
           <Card sx={{ display: 'flex' }}>
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>

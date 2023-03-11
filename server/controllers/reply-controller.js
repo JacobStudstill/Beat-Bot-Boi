@@ -1,14 +1,14 @@
-const { Reply } = require('../models');
+const { Post } = require('../models');
 
 const replyController = {
   // Create a new reply
   async addReply(req, res) {
     try {
-      const comment = await Comment.findOneAndUpdate(
-        { _id: req.params.commentId }, 
-        {$addToSet: { replies: req.body }}, 
+      const post = await Post.findOneAndUpdate(
+        { _id: req.params.postId }, 
+        {$addToSet: { replies: {...req.body, commentId: req.params.commentId} }}, 
         {new: true, runValidators: true });
-      res.json(comment);
+      res.json(post);
     } catch(err) {
       console.error(err)
       res.status(500).json(err);
@@ -51,8 +51,8 @@ const replyController = {
   // Delete an existing reply
   async deleteReply(req, res) {
     try {
-      const comment = await Comment.findOneAndUpdate(
-        { _id: req.params.commentId }, 
+      const post = await Post.findOneAndUpdate(
+        { _id: req.params.postId }, 
         {$pull: { replies: req.params.replyId }}, 
         {new: true, runValidators: true});
       res.json({message: 'Reply deleted!'});

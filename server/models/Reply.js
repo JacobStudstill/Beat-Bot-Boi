@@ -1,22 +1,22 @@
-const { Schema, model, Types } = require('mongoose');
-const commentSchema = require('./Comment')
+// const { Schema, model, Types } = require('mongoose');
+// const commentSchema = require('./Comment')
 
-const replySchema = new Schema({
-    replyText: { type: String, required: true, minLength: 1, maxLength: 500 },
-    createdAt: { type: Date, default: () => Date.now() },
-    username: { type: String, required: true },
-    comment: { type: Schema.Types.ObjectId, ref: 'Comments' },
-    // replies: [replySchema],
-    upvotes: {type: Number, required: true},
-    downvotes: {type: Number, required: true} 
-},
-    {
-        toJSON: {
-            virtuals: true,
-        },
-        id: false,
-    }
-);
+// const replySchema = new Schema({
+//     replyText: { type: String, required: true, minLength: 1, maxLength: 500 },
+//     createdAt: { type: Date, default: () => Date.now() },
+//     username: { type: String, required: true },
+//     commentId: { type: Types.ObjectId },
+//     // replies: [replySchema],
+//     upvotes: {type: Number},
+//     downvotes: {type: Number} 
+// },
+//     {
+//         toJSON: {
+//             virtuals: true,
+//         },
+//         id: false,
+//     }
+// );
 
-// const Replies = model('Replies', replySchema)
-module.exports = replySchema;
+// // const Replies = model('Replies', replySchema)
+// module.exports = replySchema;

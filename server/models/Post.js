@@ -1,13 +1,16 @@
 const { Schema, model } = require('mongoose');
-const commentSchema = require('./Comment');
 
 const postSchema = new Schema({
-    postText: { type: String, required: true, minLength: 1, maxLength: 1000 },
-    createdAt: { type: Date, default: () => Date.now() },
+    postTitle: { type: String, required: true},
+    postLink: { type: String, validate: postValidate},
+    postText: { type: String, validate: postValidate},
+    // sub: { type: [Types.ObjectId], ref: "Sub" }, or add post _id to Sub determine later
     username: { type: String, required: true },
-    comments: [commentSchema],
-    upvotes: {type: Number, required: true},
-    downvotes: {type: Number, required: true} 
+    comments: { type: [String] },
+    tags:{ type: [String], required: true },
+    upvotes: { type: [String] },
+    downvotes: { type: [String] },
+    createdAt: { type: Date, default: () => Date.now() }
 },
     {
         toJSON: {
@@ -17,9 +20,13 @@ const postSchema = new Schema({
     }
 );
 
-postSchema.virtual('commentCount').get(function () {
-    return this.comments.length;
-});
+//makes sure the user has included a link or text or both
+function postValidate(value) {
+    if (!this.postLink && !this.postText) {
+      throw new Error('At least one of postLink or postText is required');
+    } else {
+      return true;
+    }}
 
-const Posts = model('Posts', postSchema)
-module.exports = Posts;
+const Post = model('Post', postSchema)
+module.exports = Post;

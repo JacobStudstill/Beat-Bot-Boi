@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
+
 .App {
   text-align: center;
 }
@@ -228,23 +233,6 @@
   transform: translateY(-881px);
 }
 
-@media (max-width: 600px) {
-  .flex-item {
-    width: 25%;
-    height: 25%;
-    margin: 1% 2%;
-  }
-}
-
-
-
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -283,10 +271,22 @@
   border-right: solid grey 1px;
   border-left: solid grey 1px;
   width: 650px;
+  margin: auto;
+  /* position: absolute; */
 }
 
+.linksContainer {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  /* margin-right: auto; */
+  
+}
 
-@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
+.links {
+  margin-bottom: 25px;
+  margin-left: 100px;
+}
 
 #thehero {
   width: 100vw;
@@ -325,8 +325,6 @@
   font-size: 1.1rem;
 }
 
-
-
 .the-inner a {
   color: #000000;
 }
@@ -337,3 +335,19 @@
 }
 
 /* special thanks to https://codetheweb.blog/demo/full-image-hero/ */
+
+
+@media (max-width: 600px) {
+  .flex-item {
+    width: 25%;
+    height: 25%;
+    margin: 1% 2%;
+  }
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}

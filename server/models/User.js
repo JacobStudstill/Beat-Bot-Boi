@@ -12,9 +12,10 @@ const userSchema = new Schema({
         message: props => `${props.value} is not a valid email address!`
     }, },
     password: { type: String, required: true },
-    posts: { type: [String], ref: "Posts" },
-    friends: { type: [Types.ObjectId], ref: "Users" },
-    comments: [commentSchema, replySchema]
+    posts: { type: [Types.ObjectId], ref: "Post" },
+    friends: { type: [Types.ObjectId], ref: "User" },
+    // subs: { type: [Types.ObjectId], ref: "Sub" },
+    comments: { type: [Types.ObjectId], ref: "Comment" }
 },
     {
         toJSON: {

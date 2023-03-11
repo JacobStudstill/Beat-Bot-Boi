@@ -57,10 +57,12 @@ async deleteUser(req, res) {
 async updateUser(req, res) {
   try {
     const user = await User.findOneAndUpdate( 
-      req.body, 
-      { _id: req.params.userId }, 
+      // req.body, 
+      { _id: req.params.userId },
+      {$set: req.body}, 
       {new: true, runValidators: true });
-    res.json({message: 'User updated'});
+      console.log(user);
+    res.json(user);
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
@@ -73,7 +75,15 @@ async addFriend(req, res) {
       { _id: req.params.userId }, 
       {$addToSet: { friends: req.params.friendId }}, 
       {new: true});
+
+      // do we want friends to be added automatically or have to accept/follow back?
+      // const friend = await User.findOneAndUpdate(
+      //   { _id: req.params.friendId }, 
+      //   {$addToSet: { friends: req.params.userId }}, 
+      //   {new: true});
+      
     res.json(user);
+    
     } catch (err) {
       console.error(err);
       res.status(500).json(err);
@@ -86,7 +96,7 @@ async deleteFriend(req, res) {
       { _id: req.params.userId }, 
       {$pull: { friends: req.params.friendId }},
       {new: true});
-      res.json(user, {message: 'Friend deleted :('})
+      res.json({message: 'Friend deleted :('})
   } catch (err) {
     console.error(err);
     res.status(500).json(err);

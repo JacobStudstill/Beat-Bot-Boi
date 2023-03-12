@@ -1,6 +1,4 @@
 const { Schema, model } = require('mongoose');
-const commentSchema = require('./Comment');
-const replySchema = require('./Reply');
 
 const postSchema = new Schema({
     postTitle: { type: String, required: true},
@@ -29,14 +27,6 @@ function postValidate(value) {
     } else {
       return true;
     }}
-
-postSchema.virtual('commentCount').get(function () {
-    return this.comments.length;
-});
-
-postSchema.virtual('replyCount').get(function () {
-     return this.replies.length;
- });
 
 const Post = model('Post', postSchema)
 module.exports = Post;

@@ -214,12 +214,12 @@
   }
 }
 
-.homeBody {
+/* .homeBody {
   display: flex;
   justify-content: center;
-}
+}  */
 
-.cardContainer {
+/* .cardContainer {
   display: flex;
   flex-direction: column;
   border-top: none;
@@ -228,26 +228,20 @@
   border-left: solid grey 1px;
   width: 650px;
   margin: auto;
-  /* position: absolute; */
-}
+   position: absolute;
+} */
 
-.linksContainer {
+/* .linksContainer {
   display: flex;
   flex-direction: column;
-  width: 150px;
-  /* margin-right: auto; */
+  width: 150px; 
+  margin-right: auto;
   
-}
+} */
 
-.links {
+ /* .links {
   margin-bottom: 25px;
   margin-left: 100px;
-}
+}  */
 
 
-
-
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;

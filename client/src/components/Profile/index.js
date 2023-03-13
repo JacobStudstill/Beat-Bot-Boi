@@ -1,16 +1,28 @@
 import React from 'react';
 import Grid from '@mui/material/Grid'; // Grid version 1
-import Grid2 from '@mui/material/Unstable_Grid2'; // Grid version 2
+// import * as React from 'react';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+
 
 const Profile = () => {
   return (
 
     <Grid container spacing={0} columns={32}>
 
-    <Grid xs={8}>
-      <p>Post</p>
-      <p>DM</p>
-      <p>Spotify</p>
+    <Grid xs={8} display='flex' alignItems='center' direction='column'>
+      <p>
+    <Button variant="contained">Post</Button>
+    </p>
+
+    <p>
+    <Button variant="contained">DM</Button>
+    </p>
+
+    <p>
+    <Button variant="contained">Spotify</Button>
+    </p>
+    
     </Grid>
 
     <Grid xs={8}>
@@ -24,10 +36,20 @@ const Profile = () => {
       <p>Marketplace</p>
     </Grid>
 
-    <Grid xs={8}>
-      <p>Most Listened Genres</p>
-      <p>Shows</p>
-      <p>Communities</p>
+    <Grid xs={8} display='flex' alignItems='center' direction='column'>
+      
+      <p>
+      <Button variant="contained">Top Genres</Button>
+      </p>
+
+      <p>
+      <Button variant="contained">Shows</Button>
+      </p>
+
+      <p>
+      <Button variant="contained">Communities</Button>
+      </p>
+
     </Grid>
 
   </Grid>

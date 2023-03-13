@@ -7,9 +7,9 @@ import Profile from './components/Profile';
 import Landing from './components/Landing';
 import React from 'react';
 import './App.css';
-import { StickyContainer, Sticky } from 'react-sticky';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import DMPage from './components/Message/index';
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
         <Route path='/Signup' element={<Signup />} />
         <Route path='/Profile' element={<Profile />} />
         <Route path='/Home' element={<Home />} />
+        <Route path='/Message' element={<DMPage />} />
       </Routes>
       <Footer />
     </div>

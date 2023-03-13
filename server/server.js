@@ -4,12 +4,15 @@ const express = require('express');
 const db = require('./config/connection');
 // Import routes
 const routes = require('./routes');
+const cors = require("cors");
+
 
 // Set up port
 const PORT = process.env.PORT || 3001;
 // Create instance of express app
 const app = express();
 
+app.use(cors({ origin: "http://localhost:3000" }));
 
 app.use(express.urlencoded({ extended: true }));
 // Middleware to parse to json 

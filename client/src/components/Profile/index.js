@@ -5,7 +5,7 @@ import Grid2 from '@mui/material/Unstable_Grid2'; // Grid version 2
 const Profile = () => {
   return (
 
-    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+    <Grid container spacing={0} columns={32}>
 
     <Grid xs={6}>
       <p>1</p>

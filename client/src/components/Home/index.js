@@ -36,7 +36,7 @@ export default function RecipeReviewCard() {
   return (
     <>
       <Grid container spacing={0} columns={12}>
-        <Grid xs={4}> 
+        <Grid xs={4} display='flex' alignItems='center' direction='column'> 
         <p>
         <Button variant="contained">Share</Button>
 
@@ -271,7 +271,7 @@ export default function RecipeReviewCard() {
           </Card>
           </p>
         </Grid>
-        <Grid xs={4}>
+        <Grid xs={4} display='flex' alignItems='center' direction='column' >
 
           <p>
           <Button variant="contained">Communities</Button>
@@ -280,7 +280,7 @@ export default function RecipeReviewCard() {
           <p>
           <Button variant="contained">Upcoming Shows</Button>
           </p>
-          
+
         </Grid>
       </Grid>
     </>

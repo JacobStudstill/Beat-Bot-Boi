@@ -10,7 +10,7 @@ const Profile = () => {
 
     <Grid container spacing={0} columns={32}>
 
-    <Grid xs={8}>
+    <Grid xs={8} display='flex' alignItems='center' direction='column'>
       <p>
     <Button variant="contained">Post</Button>
     </p>
@@ -36,7 +36,7 @@ const Profile = () => {
       <p>Marketplace</p>
     </Grid>
 
-    <Grid xs={8}>
+    <Grid xs={8} display='flex' alignItems='center' direction='column'>
       
       <p>
       <Button variant="contained">Top Genres</Button>

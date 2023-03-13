@@ -1,12 +1,12 @@
 const router = require('express').Router();
 const {
-  getMessages,
+  openMessages,
   sendMessage,
   deleteMessage
 } = require('../../controllers/message-controller');
 
 // /api/messages
-router.route('/:senderId/:receiverId').get(getMessages).post(sendMessage);
+router.route('/:senderId/:receiverId').get(openMessages).post(sendMessage);
 
 // /api/messages/:id
 router.route('/:messageId').delete(deleteMessage);

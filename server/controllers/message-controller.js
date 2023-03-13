@@ -22,10 +22,15 @@ const messageController = {
     }
   },
 
-  // get all messages between users
-  async getMessages (req, res) {
+  // get message thread between users
+  async openMessages (req, res) {
     try {
       const { senderId, receiverId } = req.params;
+       // Find all messages between the sender and receiver where read is false
+      await Message.updateMany(
+        { senderId: receiverId, receiverId: senderId, read: false },
+        { $set: { read: true } }
+      ).exec();
       const messages = await Message.find({
         $or: [
           { senderId, receiverId },

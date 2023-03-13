@@ -10,17 +10,13 @@ const Profile = () => {
     <Grid xs={6}>
       <p>1</p>
     </Grid>
-    
+
     <Grid xs={6}>
       <p>2</p>
     </Grid>
 
     <Grid xs={6}>
       <p>3</p>
-    </Grid>
-
-    <Grid xs={6}>
-      <p>4</p>
     </Grid>
 
     <Grid xs={6}>

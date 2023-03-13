@@ -7,19 +7,22 @@ const Profile = () => {
 
     <Grid container spacing={0} columns={32}>
 
-    <Grid xs={6}>
+    <Grid xs={8}>
       <p>1</p>
     </Grid>
 
-    <Grid xs={6}>
-      <p>2</p>
+    <Grid xs={8}>
+      <p>Bio</p>
+      <p>Friends?</p>
+      <p>Comment History?</p>
     </Grid>
 
-    <Grid xs={6}>
-      <p>3</p>
+    <Grid xs={8}>
+      <p>Posts</p>
+      <p>Marketplace</p>
     </Grid>
 
-    <Grid xs={6}>
+    <Grid xs={8}>
       <p>4</p>
     </Grid>
 

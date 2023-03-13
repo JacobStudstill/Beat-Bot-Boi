@@ -8,7 +8,9 @@ const Profile = () => {
     <Grid container spacing={0} columns={32}>
 
     <Grid xs={8}>
-      <p>1</p>
+      <p>Post</p>
+      <p>DM</p>
+      <p>Spotify</p>
     </Grid>
 
     <Grid xs={8}>
@@ -23,11 +25,12 @@ const Profile = () => {
     </Grid>
 
     <Grid xs={8}>
-      <p>4</p>
+      <p>Most Listened Genres</p>
+      <p>Shows</p>
+      <p>Communities</p>
     </Grid>
 
   </Grid>
-
   );
 };
 

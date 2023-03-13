@@ -32,7 +32,7 @@ export default function RecipeReviewCard() {
 
   return (
     <>
-      <Grid container spacing={0}>
+      <Grid container spacing={0} columns={12}>
         <Grid xs={4}></Grid>
         <Grid xs={4}>
           <p>

@@ -22,7 +22,7 @@ const Profile = () => {
             </div>
           </div>
           <div className="sharePosts">
-            <Share />
+          
             <Home />
             <SideBar />
           </div>

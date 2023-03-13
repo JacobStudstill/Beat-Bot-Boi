@@ -18,6 +18,7 @@ const SideBar = () => {
           <div className="rightbarInfoItem">
             <span className="info1">Checkout my playlist!</span>
             <span className="info2"> </span>
+            <img className="playList" src={spotify} alt="spotify"/>
           </div>
           
         </div>

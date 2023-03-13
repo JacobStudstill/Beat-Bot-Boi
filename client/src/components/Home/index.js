@@ -15,6 +15,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Grid from '@mui/material/Grid'; // Grid version 1
+import Share from '../Share/index'
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -32,6 +33,7 @@ export default function RecipeReviewCard() {
 
   return (
     <>
+      <Share />
       <Grid container spacing={0}>
         <Grid xs={4}></Grid>
         <Grid xs={4}>

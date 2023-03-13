@@ -1,5 +1,5 @@
 import "./share.css";
-import {PermMedia, Label,Room, EmojiEmotions} from "@mui/icons-material"
+import {PermMedia, Label,Room, MusicNote} from "@mui/icons-material"
 import profilep from '../../assets/profilep.jpeg'
 import React from 'react'
 
@@ -31,7 +31,7 @@ const Share = () => {
                     <span className="optionText">Location</span>
                 </div>
                 <div className="option">
-                    <EmojiEmotions htmlColor="goldenrod" className="icon"/>
+                    <MusicNote htmlColor="goldenrod" className="icon"/>
                     <span className="optionText">Music</span>
                 </div>
             </div>

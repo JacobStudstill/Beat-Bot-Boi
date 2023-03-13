@@ -5,9 +5,10 @@ import Signup from './components/Signup';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import Landing from './components/Landing';
+import Upload from './components/Upload';
 import React from 'react';
 import './App.css';
-import { StickyContainer, Sticky } from 'react-sticky';
+// import { StickyContainer, Sticky } from 'react-sticky';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
@@ -20,6 +21,7 @@ function App() {
         <Route path='/Signup' element={<Signup />} />
         <Route path='/Profile' element={<Profile />} />
         <Route path='/Home' element={<Home />} />
+        <Route path='/Upload' element={<Upload />} />
       </Routes>
       <Footer />
     </div>

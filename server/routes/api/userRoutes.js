@@ -12,7 +12,7 @@ const {
 } = require('../../controllers/user-controller');
 
 // import middleware
-const { authMiddleware } = require('../../utils/auth');
+const { authMiddleware } = require('../../auth');
 
 // put authMiddleware anywhere we need to send a token for verification of user
 // /api/users

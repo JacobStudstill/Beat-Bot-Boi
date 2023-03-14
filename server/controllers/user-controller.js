@@ -1,4 +1,5 @@
 const { User, Post } = require("../models");
+const { signToken } = require('../auth');
 
 const userController = {
   // Get all users

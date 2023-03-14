@@ -16,6 +16,7 @@ import { Link } from 'react-router-dom'
 import { loginUser } from '../../utils/API'
 import Auth from '../../utils/auth'
 import { useState } from 'react';
+import { Alert } from 'react-bootstrap';
 
 function Copyright(props) {
   return (
@@ -45,12 +46,34 @@ export default function Login() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    // check if form has everything (as per react-bootstrap docs)
+    // check if form has everything 
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
+
+    try {
+      const response = await loginUser(userFormData);
+
+      if (!response.ok) {
+        throw new Error('something went wrong!');
+      }
+
+      const { token, user } = await response.json();
+      console.log(user);
+      Auth.login(token);
+    } catch (err) {
+      console.error(err);
+      setShowAlert(true);
+    }
+
+    setUserFormData({
+      username: '',
+      email: '',
+      password: '',
+    });
+  }
   // const handleSubmit = (event) => {
   //   event.preventDefault();
   //   const data = new FormData(event.currentTarget);
@@ -94,7 +117,10 @@ export default function Login() {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" noValidate validated={validated} onSubmit={handleFormSubmit} sx={{ mt: 1 }}>
+            <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
+          Something went wrong with your login credentials!
+        </Alert>
               <TextField
                 margin="normal"
                 required
@@ -103,6 +129,8 @@ export default function Login() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={handleInputChange}
+                value={userFormData.email}
                 autoFocus
               />
               <TextField
@@ -114,6 +142,8 @@ export default function Login() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={handleInputChange}
+                value={userFormData.password}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -123,6 +153,7 @@ export default function Login() {
                 type="submit"
                 fullWidth
                 variant="contained"
+                disabled={!(userFormData.email && userFormData.password)}
                 sx={{ mt: 3, mb: 2 }}
               >
                 Login

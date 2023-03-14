@@ -14,26 +14,64 @@
 
 
 .flex-container {
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-top: 1%;
+  margin-top: .5%;
   margin-left: auto;
-  margin-right: auto;
-  height: 80vh;
-  width: 100%;
+  height: 100vh;
+  width: 50%;
   background-color: rgb(36, 35, 35);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  padding-top: .8%;
   padding-bottom: .8%;
+}
+
+.text-container {
+  margin-top: 1%;
+  margin-left: auto;
+  margin-right:auto;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  padding-bottom: .8%;
+}
+
+.text-container h2{
+  font-weight: 700;
+  text-align: center;
+}
+
+.text-container p {
+  width: 37vw;
+  text-align: center;
+  font-size: larger;
+}
+
+.text-container a{
+  color: black;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.text-container a:active {
+  color: yellow;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.text-container a:link {
+  color: black;
+  text-decoration: underline;
 }
 
 
 .flex-item {
-  width: 18vw;
+  width: 9vw;
   height: 20vh;
   background-color: #ddd;
   margin: .1% 3% 0 0;
@@ -208,20 +246,6 @@
 }
 
 
-.microphone {
-  position: fixed;
-  top: 3;
-  right: 3.5%;
-  width: 10vh;
-}
-
-.hand {
-  width: 20vh;
-  position: relative;
-  left: 90%;
-  top: 86%;
-}
-
 .fixed {
   width: 20vh;
   position: fixed;
@@ -259,7 +283,7 @@
 }
 
 #thehero {
-  width: 100vw;
+  width: 99.1vw;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -303,14 +327,65 @@
   padding: 0 0 0 0;
 }
 
+.backgroundColor{
+  background-color: #c09570;
+}
+
 /* special thanks to https://codetheweb.blog/demo/full-image-hero/ */
 
+@media (max-width: 1310px) {
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right:1%;
+    height: 80vh;
+    width: 100%;
+    background-color: rgb(36, 35, 35);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding-bottom: .8%;
+  }
+  
+  .text-container {
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right:auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    padding-bottom: .8%;
+  }
+
+  .flex-item {
+    width: 25%;
+    height: 16%;
+    margin: .6% 2%;
+  }
+
+  .text-container h2{
+    font-weight: 700;
+    text-align: center;
+  }
+  
+  .text-container p {
+    width: 80vw;
+    text-align: center;
+    font-size: larger;
+  }
+}
 
 @media (max-width: 600px) {
   .flex-item {
     width: 25%;
-    height: 25%;
-    margin: 1% 2%;
+    height: 16%;
+    margin: 0% 1% 0% 1%;
   }
 }
 

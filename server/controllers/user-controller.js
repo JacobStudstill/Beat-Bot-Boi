@@ -2,6 +2,21 @@ const { User, Post } = require("../models");
 const { signToken } = require('../auth');
 
 const userController = {
+  // Login user
+  async login({ body }, res) {
+    const user = await User.findOne({ $or: [{ username: body.username }, { email: body.email }] });
+    if (!user) {
+      return res.status(400).json({ message: "Can't find this user" });
+    }
+
+    const correctPw = await user.isCorrectPassword(body.password);
+
+    if (!correctPw) {
+      return res.status(400).json({ message: 'Wrong password!' });
+    }
+    const token = signToken(user);
+    res.json({ token, user });
+  },
   // Get all users
   async getUsers(req, res) {
     try {
@@ -34,7 +49,8 @@ const userController = {
 async createUser(req, res) {
   try {
     const user = await User.create(req.body)
-      res.json(user);
+    const token = signToken(user);
+    res.json({ token, user });
   } catch (err){
     res.status(500).json(err);
   } 

@@ -1,15 +1,16 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { Typography, Box } from '@mui/material';
-
+import axios from 'axios';
 
 export default function UploadButtons() {
-  const [selectedFile, setSelectedFile] = React.useState(null);
-  const [selectedThumbnail, setSelectedThumbnail] = React.useState(null);
+  const [selectedFile, setSelectedFile] = useState('');
+  const [selectedThumbnail, setSelectedThumbnail] = useState(null);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0]
+    console.log('This is the file from the form', event.target.files[0].name)
     setSelectedFile(file)
 
     //creates new FileReader object
@@ -29,11 +30,16 @@ export default function UploadButtons() {
     event.preventDefault();
     const formData = new FormData();
     formData.append('file', selectedFile);
+    
+
+    if (!formData) {console.log('Empty')}
     try {
-      const response = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData,
+      console.log("This is the form data", formData)
+      // const response = await fetch('http://localhost:3001/api/upload', {
+      const response = await axios.post('/api/upload', formData, {
+        headers: {'Content-Type': 'multipart/form-data'}
       });
+      // console.log('')
       const data = await response.json();
       console.log(data);
     } catch (error) {
@@ -43,9 +49,10 @@ export default function UploadButtons() {
   
   return (
     <Stack direction="column" alignItems="center" spacing={2}>
+      <form encType="multipart/form-data" onSubmit={handleSubmit}>
       <Button variant="contained" component="label">
         Select File
-        <input hidden accept="image/*" type="file" onChange={handleFileChange} />
+        <input name='avatar' encType="multipart/form-data" hidden accept="image/*" type="file" onChange={handleFileChange} />
       </Button>
       {selectedThumbnail && (
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -53,9 +60,10 @@ export default function UploadButtons() {
           <img src={selectedThumbnail} alt="thumbnail" style={{ maxWidth: 200, maxHeight: 200 }} />
         </Box>
       )}
-      <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }} onClick={handleSubmit}>
+      <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }} >
         Submit
       </Button>
+      </form>
     </Stack>
   );
 }

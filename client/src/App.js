@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Signup from './components/Signup';
 import Home from './components/Home';
-import Profile from './components/Profile';
+import Profile from './components/Profile/index';
 import Landing from './components/Landing';
 import Upload from './components/Upload';
 import React from 'react';

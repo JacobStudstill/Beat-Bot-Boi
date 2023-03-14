@@ -8,7 +8,6 @@ import Landing from './components/Landing';
 import Upload from './components/Upload';
 import React from 'react';
 import './App.css';
-import { StickyContainer, Sticky } from 'react-sticky';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import MessengerModal from './components/Message/DM';

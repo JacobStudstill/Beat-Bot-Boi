@@ -15,6 +15,10 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Grid from '@mui/material/Grid'; // Grid version 1
+import Share from '../Share/index'
+// import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -28,12 +32,18 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function RecipeReviewCard() {
-  const [expanded, setExpanded] = React.useState(false);
-
+  const expanded = React.useState(false);
+// removed setExpanded from const above, was throwing error, may need to replace later. If so, write as const [expanded, setExpanded]
   return (
     <>
-      <Grid container spacing={0}>
-        <Grid xs={4}></Grid>
+      <Share />
+      <Grid container spacing={0} columns={12}>
+        <Grid xs={4} display='flex' alignItems='center' direction='column'> 
+        <p>
+        <Button variant="contained">Share</Button>
+
+        </p>
+        </Grid>
         <Grid xs={4}>
           <p>
             <Card sx={{ maxWidth: 750 }}>
@@ -263,8 +273,16 @@ export default function RecipeReviewCard() {
           </Card>
           </p>
         </Grid>
-        <Grid xs={4}>
-          <p></p>
+        <Grid xs={4} display='flex' alignItems='center' direction='column' >
+
+          <p>
+          <Button variant="contained">Communities</Button>
+          </p>
+
+          <p>
+          <Button variant="contained">Upcoming Shows</Button>
+          </p>
+
         </Grid>
       </Grid>
     </>

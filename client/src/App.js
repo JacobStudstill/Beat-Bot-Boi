@@ -11,7 +11,7 @@ import './App.css';
 // import { StickyContainer, Sticky } from 'react-sticky';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import DMPage from './components/Message/index';
+import MessengerModal from './components/Message/DM';
 import Login from './components/Login';
 
 
@@ -21,11 +21,11 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Landing />} />
-        <Route path='/Signup' element={<Signup />} />
+        <Route exact path='/Signup' element={<Signup />} />
         <Route path='/Login' element={<Login />} />
         <Route path='/Profile' element={<Profile />} />
         <Route path='/Home' element={<Home />} />
-        <Route path='/Message' element={<DMPage />} />
+        <Route path='/Message' element={<MessengerModal />} />
         <Route path='/Upload' element={<Upload />} />
       </Routes>
       <Footer />

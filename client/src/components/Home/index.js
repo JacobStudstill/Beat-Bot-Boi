@@ -18,7 +18,7 @@ import Grid from '@mui/material/Grid'; // Grid version 1
 // import Share from '../Share/index'
 // import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-
+import Auth from '../../utils/auth';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -32,11 +32,16 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function RecipeReviewCard() {
+  const token = Auth.loggedIn() ? Auth.getToken() : null;
+  const user = token ? Auth.getProfile().data.username : null;
+  
   const expanded = React.useState(false);
 // removed setExpanded from const above, was throwing error, may need to replace later. If so, write as const [expanded, setExpanded]
   return (
     <>
+    {token && <h1>Welcome {user}!</h1>}
       {/* <Share /> */}
+      
       <Grid container spacing={0} columns={12}>
         <Grid xs={4} display='flex' alignItems='center' direction='column'> 
         <p>

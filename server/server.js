@@ -6,9 +6,11 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 // Import DB connection
 const db = require('./config/connection');
+// const cors = require('cors');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// app.use(cors());
 
 // Import routes
 const routes = require('./routes');

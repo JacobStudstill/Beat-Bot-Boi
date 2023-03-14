@@ -18,6 +18,7 @@ import Auth from '../../utils/auth'
 import { useState } from 'react';
 import { Alert } from 'react-bootstrap';
 
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -34,6 +35,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Login() {
+  
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
@@ -73,6 +75,8 @@ export default function Login() {
       email: '',
       password: '',
     });
+
+    
   }
   // const handleSubmit = (event) => {
   //   event.preventDefault();

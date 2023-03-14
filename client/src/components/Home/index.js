@@ -18,9 +18,7 @@ import Grid from '@mui/material/Grid'; // Grid version 1
 // import Share from '../Share/index'
 // import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import { useEffect, useState } from 'react';
 import Auth from '../../utils/auth';
-import { getMe } from '../../utils/API';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -34,36 +32,9 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function RecipeReviewCard() {
-  const [userData, setUserData] = useState({});
-  const userDataLength = Object.keys(userData).length;
   const token = Auth.loggedIn() ? Auth.getToken() : null;
   const user = token ? Auth.getProfile().data.username : null;
-  useEffect(() => {
-    const getUserData = async () => {
-      try {
-
-
-        if (!token) {
-          return false;
-        }
-
-        const response = await getMe(token);
-
-        if (!response.ok) {
-          throw new Error('something went wrong!');
-        }
-
-        const user = await response.json();
-        setUserData(user);
-        console.log(user)
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    getUserData();
-    
-  }, [token, userDataLength]);
+  
   const expanded = React.useState(false);
 // removed setExpanded from const above, was throwing error, may need to replace later. If so, write as const [expanded, setExpanded]
   return (

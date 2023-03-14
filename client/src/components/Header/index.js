@@ -14,13 +14,29 @@ import MenuItem from '@mui/material/MenuItem';
 // import AdbIcon from '@mui/icons-material/Adb';
 import {Link} from 'react-router-dom'
 
-const pages = ['Login'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout', 'Message'];
 
 function Header() {
   
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [state, setState] = React.useState({pages: ['Login']})
+  const pages = state.pages
+
+
+  function handleNav() {
+    setState(prevState => {
+      return { pages: ['Home', 'Profile', 'Logout']}
+    });
+  };
+
+  function userCheck() {
+    if (loggedin) {
+      handleNav()
+    }
+  }
+
+  userCheck();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -163,4 +179,6 @@ function Header() {
     </AppBar>
   );
 }
+
+
 export default Header;

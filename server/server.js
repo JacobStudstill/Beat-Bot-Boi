@@ -5,17 +5,14 @@ const db = require('./config/connection');
 // Import routes
 const routes = require('./routes');
 const uploadRoutes = require('./routes/api/uploadRoutes');
-
-
-
-
+const cors = require("cors");
 
 // Set up port
 const PORT = process.env.PORT || 3001;
 // Create instance of express app
 const app = express();
 
-
+app.use(cors({ origin: "http://localhost:3000" }));
 
 app.use(express.urlencoded({ extended: true }));
 app.use('/api/upload', uploadRoutes);

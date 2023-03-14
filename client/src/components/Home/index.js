@@ -15,6 +15,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Grid from '@mui/material/Grid'; // Grid version 1
+import Share from '../Share/index'
 // import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
@@ -35,6 +36,7 @@ export default function RecipeReviewCard() {
 // removed setExpanded from const above, was throwing error, may need to replace later. If so, write as const [expanded, setExpanded]
   return (
     <>
+      <Share />
       <Grid container spacing={0} columns={12}>
         <Grid xs={4} display='flex' alignItems='center' direction='column'> 
         <p>

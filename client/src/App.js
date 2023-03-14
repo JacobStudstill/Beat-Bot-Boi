@@ -12,6 +12,8 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import DMPage from './components/Message/index';
+import Login from './components/Login';
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Landing />} />
         <Route path='/Signup' element={<Signup />} />
+        <Route path='/Login' element={<Login />} />
         <Route path='/Profile' element={<Profile />} />
         <Route path='/Home' element={<Home />} />
         <Route path='/Message' element={<DMPage />} />

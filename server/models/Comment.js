@@ -17,5 +17,13 @@ const commentSchema = new Schema({
     }
 );
 
+commentSchema.virtual('commentUpvotes').get(function () {
+    return this.upvotes.length
+});
+
+commentSchema.virtual('commentDownvotes').get(function () {
+    return this.downvotes.length
+});
+
 const Comment = model('Comment', commentSchema)
 module.exports = Comment;

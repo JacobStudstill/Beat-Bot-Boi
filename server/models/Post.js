@@ -20,6 +20,14 @@ const postSchema = new Schema({
     }
 );
 
+postSchema.virtual('postUpvotes').get(function () {
+    return this.upvotes.length
+});
+
+postSchema.virtual('postDownvotes').get(function () {
+    return this.downvotes.length
+});
+
 //makes sure the user has included a link or text or both
 function postValidate(value) {
     if (!this.postLink && !this.postText) {

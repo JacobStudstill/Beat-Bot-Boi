@@ -16,13 +16,15 @@ import Login from './components/Login';
 
 
 function App() {
+
+
   return (
     <div>
       <Header />
       <Routes>
         <Route path='/' element={<Landing />} />
-        <Route exact path='/Signup' element={<Signup />} />
-        <Route path='/Login' element={<Login />} />
+        <Route exact path='/Login' element={<Login />} />
+        <Route path='/Signup' element={<Signup />} />
         <Route path='/Profile' element={<Profile />} />
         <Route path='/Home' element={<Home />} />
         <Route path='/Message' element={<MessengerModal />} />

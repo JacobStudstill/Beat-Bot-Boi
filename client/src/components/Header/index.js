@@ -14,10 +14,11 @@ import MenuItem from '@mui/material/MenuItem';
 // import AdbIcon from '@mui/icons-material/Adb';
 import {Link} from 'react-router-dom'
 
-const pages = ['Signup', 'Home', 'Profile', 'Message'];
+const pages = ['Login'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout', 'Message'];
 
 function Header() {
+  
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 

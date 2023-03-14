@@ -8,6 +8,7 @@ const {
   addFriend,
   deleteFriend,
   login,
+  getCurrentUser
 } = require('../../controllers/user-controller');
 
 // import middleware
@@ -23,6 +24,8 @@ router.route('/')
 
 // api/users/login
 router.route('/login').post(login);
+
+router.route('/me').get(authMiddleware, getCurrentUser);
 
 // /api/users/:id
 router.route('/:userId')

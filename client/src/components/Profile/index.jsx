@@ -3,8 +3,9 @@ import './profile.css';
 import profilep from '../../assets/profilep.jpeg'
 import cover from '../../assets/cov.jpeg'
 import Home from '../Home'
-import Share from '../Share/index'
+// import Share from '../Share/index'
 import SideBar from '../Sidebar/index'
+
 
 const Profile = () => {
   return (
@@ -22,7 +23,6 @@ const Profile = () => {
             </div>
           </div>
           <div className="sharePosts">
-          
             <Home />
             <SideBar />
           </div>

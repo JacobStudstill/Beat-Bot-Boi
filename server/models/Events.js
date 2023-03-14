@@ -17,7 +17,7 @@ const eventSchema = new Schema({
     }
 );
 
-userSchema.virtual('usersAttending').get(function () {
+eventSchema.virtual('usersAttending').get(function () {
     return this.going.length
 });
 

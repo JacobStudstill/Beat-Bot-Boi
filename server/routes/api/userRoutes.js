@@ -2,34 +2,42 @@ const router = require('express').Router();
 const {
   getUsers,
   getUserById,
-  createUser,
+  registerUser,
   updateUser,
   deleteUser,
   addFriend,
   deleteFriend,
+  login,
 } = require('../../controllers/user-controller');
 
+// import middleware
+const { authMiddleware } = require('../../auth/auth');
+
+// put authMiddleware anywhere we need to send a token for verification of user
 // /api/users
 router.route('/')
   // GET all users  
   .get(getUsers)
-  // POST a new user
-  .post(createUser);
+  // Register a new user
+  .post(registerUser);
+
+// api/users/login
+router.route('/login').post(login);
 
 // /api/users/:id
 router.route('/:userId')
   .get(getUserById)
   // PUT to update a user by its _id
-  .put(updateUser)
+  .put(authMiddleware, updateUser)
   // DELETE to remove user by its _id
-  .delete(deleteUser);
+  .delete(authMiddleware, deleteUser);
 
    // /api/users/:userId/friends/:friendId
 router.route('/:userId/friends/:friendId')
 // POST to add a new friend to a user's friend list
-    .post(addFriend)
+    .post(authMiddleware, addFriend)
 // DELETE to remove a friend from a user's friend list
-    .delete(deleteFriend)
+    .delete(authMiddleware, deleteFriend)
 
 // export router so app can use it
 module.exports = router;

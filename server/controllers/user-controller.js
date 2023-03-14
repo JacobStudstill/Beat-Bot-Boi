@@ -1,6 +1,38 @@
 const { User, Post } = require("../models");
+const { signToken } = require('../auth/auth');
 
 const userController = {
+  // Login user
+  async login({ body }, res) {
+    const user = await User.findOne({ $or: [{ username: body.username }, { email: body.email }] });
+    if (!user) {
+      return res.status(400).json({ message: "Can't find this user" });
+    }
+
+    const correctPw = await user.isCorrectPassword(body.password);
+
+    if (!correctPw) {
+      return res.status(400).json({ message: 'Wrong password!' });
+    }
+    const token = signToken(user);
+    res.json({ token, user });
+  },
+
+  // Register a user, sign a token, and send it back (to client/src/components/SignUpForm.js)
+async registerUser({ body }, res) {
+  try {
+    const user = await User.create(body)
+    if (!user) {
+      return res.status(400).json({ message: 'Something is wrong!' });
+    }
+    const token = signToken(user);
+    res.json({ token, user });
+  } catch (err){
+    console.log(err)
+    res.status(500).json(err);
+  } 
+
+  },
   // Get all users
   async getUsers(req, res) {
     try {
@@ -28,16 +60,6 @@ const userController = {
     console.log(err);
     res.status(500).json(err)
   }
-},
-// Create a new user
-async createUser(req, res) {
-  try {
-    const user = await User.create(req.body)
-      res.json(user);
-  } catch (err){
-    res.status(500).json(err);
-  } 
-
 },
 // Delete a user and associated posts
 async deleteUser(req, res) {

@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
+@import url('https://fonts.googleapis.com/css?family=Caveat');
 
 .App {
   text-align: center;
@@ -20,25 +21,27 @@
   align-items: center;
   margin-top: .5%;
   margin-left: auto;
-  height: 100vh;
+  margin-bottom:1%; 
+  height: 80vh;
   width: 50%;
   background-color: rgb(36, 35, 35);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   padding-bottom: .8%;
+  border: #000000;
+  border-radius: 10px;
 }
 
 .text-container {
-  margin-top: 1%;
   margin-left: auto;
   margin-right:auto;
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: 50%;
-  padding-bottom: .8%;
+  width: 49%;
+
 }
 
 .text-container h2{
@@ -47,9 +50,11 @@
 }
 
 .text-container p {
+  font-family: 'Caveat';
   width: 37vw;
   text-align: center;
-  font-size: larger;
+  font-size: 190%;
+  font-weight: 500;
 }
 
 .text-container a{
@@ -69,12 +74,202 @@
   text-decoration: underline;
 }
 
+.line__1,
+.line__2,
+.line__3,
+.line__4,
+.line__5,
+.line__6,
+.line__7{
+  white-space: nowrap; /* keep text in one line */
+  overflow: hidden; /* hide text behind the cursor */
+  margin: 0.5rem auto;
+  font-family: "Caveat";
+  font-size: 2rem;
+  font-weight: bold;
+}
+.line__1 {
+
+  /* define animation types for text + cursor */
+  animation: animated-text__1 4s steps(30, end) 1s 1 normal both,
+    animated-cursor__1 900ms steps(30, end);
+}
+
+.line__2 {
+
+  /* define animation types for text + cursor */
+  animation: animated-text__2 4s steps(30, end) 1s 1 normal both,
+    animated-cursor__2 900ms steps(30, end) 8;
+  -webkit-animation-delay: 5s;
+  animation-delay: 5s;
+}
+
+.line__3 {
+
+  /* define animation types for text + cursor */
+  animation: animated-text__3 4s steps(30, end) 1s 1 normal both,
+  animated-cursor__3 900ms steps(30, end);
+  -webkit-animation-delay: 9s;
+  animation-delay: 9s;
+}
+
+.line__4 {
+
+  /* define animation types for text + cursor */
+  animation: animated-text__4 4s steps(30, end) 1s 1 normal both,
+    animated-cursor__4 900ms steps(30, end) ;
+  -webkit-animation-delay: 13s;
+  animation-delay: 13s;
+}
+
+.line__5 {
+
+  /* define animation types for text + cursor */
+  animation: animated-text__5 4s steps(30, end) 1s 1 normal both,
+    animated-cursor__5 900ms steps(30, end) 8;
+  -webkit-animation-delay: 17s;
+  animation-delay: 17s;
+}
+
+.line__6 {
+
+  /* define animation types for text + cursor */
+  animation: animated-text__6 4s steps(30, end) 1s 1 normal both,
+    animated-cursor__6 900ms steps(30, end) 8;
+  -webkit-animation-delay: 21s;
+  animation-delay: 21s;
+}
+
+.line__7 {
+  text-align: right;
+  /* define animation types for text + cursor */
+  animation: animated-text__6 4s steps(30, end) 1s 1 normal both,
+    animated-cursor__6 900ms steps(30, end) 8;
+  -webkit-animation-delay: 25s;
+  animation-delay: 25s;
+}
+
+@keyframes animated-cursor__1 {
+  from {
+    border-right-color: #000000;
+  }
+  to {
+    border-right-color: #BA8C63;
+  }
+}
+
+@keyframes animated-cursor__2 {
+  from {
+    border-right-color: #BA8C63;
+  }
+  to {
+    border-right-color: #BA8C63;
+  }
+}
+@keyframes animated-cursor__3 {
+  from {
+    border-right-color: #BA8C63;
+  }
+  to {
+    border-right-color: #BA8C63;
+  }
+}
+@keyframes animated-cursor__4 {
+  from {
+    border-right-color: #BA8C63;
+  }
+  to {
+    border-right-color: #BA8C63;
+  }
+}
+
+@keyframes animated-cursor__5 {
+  from {
+    border-right-color: #BA8C63;
+  }
+  to {
+    border-right-color: #BA8C63;
+  }
+}
+
+@keyframes animated-cursor__6 {
+  from {
+    border-right-color: #BA8C63;
+  }
+  to {
+    border-right-color: #BA8C63;
+  }
+}
+
+@keyframes animated-text__1 {
+  from {
+    width: 0;
+  }
+  to {
+    width: 38rem;
+  }
+}
+
+@keyframes animated-text__2 {
+  from {
+    width: 0;
+  }
+  to {
+    width: 36rem;
+  }
+}
+
+@keyframes animated-text__3 {
+  from {
+    width: 0;
+  }
+  to {
+    width: 38rem;
+  }
+}
+
+@keyframes animated-text__4 {
+  from {
+    width: 0;
+  }
+  to {
+    width: 38rem;
+  }
+}
+
+@keyframes animated-text__5 {
+  from {
+    width: 0;
+  }
+  to {
+    width: 40rem;
+  }
+}
+
+@keyframes animated-text__6 {
+  from {
+    width: 0;
+  }
+  to {
+    width: 38rem;
+  }
+}
+
+
+
+
+.wrapper {
+  margin-top: 5%;
+  width: 100%;
+  height: 100%;
+}
+
 
 .flex-item {
   width: 9vw;
   height: 20vh;
   background-color: #ddd;
-  margin: .1% 3% 0 0;
+  margin: 0% 1% 0 1%;
 }
 
 .flex-1 {
@@ -282,6 +477,7 @@
   }
 }
 
+
 #thehero {
   width: 99.1vw;
   height: 100vh;
@@ -298,7 +494,7 @@
 }
 
 .the-inner {
-  background-color: rgba(256, 256, 256, 0.8);
+  background-color: #BA8C63;
   width: 90vw;
   padding: 1rem;
 }
@@ -313,7 +509,7 @@
 }
 
 .the-inner p {
-  color: #606061;
+  color: #000000;
   text-align: left;
   font-size: 1.1rem;
 }
@@ -328,7 +524,7 @@
 }
 
 .backgroundColor{
-  background-color: #c09570;
+  background-color: #BA8C63;
 }
 
 /* special thanks to https://codetheweb.blog/demo/full-image-hero/ */
@@ -389,6 +585,31 @@
   }
 }
 
+@media (max-width: 450px) {
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right:1%;
+    height: 60vh;
+    width: 100%;
+    background-color: rgb(36, 35, 35);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding-bottom: .8%;
+  }
+
+  .flex-item {
+    width: 25%;
+    height: 16%;
+    margin: 0% 1% 0% 1%;
+  }
+
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

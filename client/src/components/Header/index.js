@@ -11,11 +11,11 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+// import AdbIcon from '@mui/icons-material/Adb';
 import {Link} from 'react-router-dom'
 
-const pages = ['Signup', 'Home', 'Profile'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = ['Signup', 'Home', 'Profile', 'Message'];
+const settings = ['Profile', 'Account', 'Dashboard', 'Logout', 'Message'];
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -50,8 +50,9 @@ function Header() {
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
+              fontSize: 21,
+              letterSpacing: '.2rem',
+              color: 'black',
               textDecoration: 'none',
             }}
           >
@@ -60,7 +61,7 @@ function Header() {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
-              size="large"
+              size="medium"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
@@ -90,7 +91,8 @@ function Header() {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <Link style={{textDecoration: "none", color: "white"}} to={`/${page}`}>{page}</Link>
+                    {/* mobile nav dropdown */}
+                    <Link style={{textDecoration: "none", color: "black"}} to={`/${page}`}>{page}</Link>
                   </Typography>
                 </MenuItem>
               ))}
@@ -108,7 +110,7 @@ function Header() {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: 'black',
               textDecoration: 'none',
             }}
           >
@@ -119,7 +121,7 @@ function Header() {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'black', display: 'block' }}
               >
                 <Link style={{textDecoration: "none", color: "white"}}  to={`/${page}`}>{page}</Link>
               </Button>

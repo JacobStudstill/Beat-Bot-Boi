@@ -1,5 +1,5 @@
 const { User, Post } = require("../models");
-const { signToken } = require('../auth');
+const { signToken } = require('../auth/auth');
 
 const userController = {
   // Login user
@@ -16,6 +16,22 @@ const userController = {
     }
     const token = signToken(user);
     res.json({ token, user });
+  },
+
+  // Register a user, sign a token, and send it back (to client/src/components/SignUpForm.js)
+async registerUser({ body }, res) {
+  try {
+    const user = await User.create(body)
+    if (!user) {
+      return res.status(400).json({ message: 'Something is wrong!' });
+    }
+    const token = signToken(user);
+    res.json({ token, user });
+  } catch (err){
+    console.log(err)
+    res.status(500).json(err);
+  } 
+
   },
   // Get all users
   async getUsers(req, res) {
@@ -44,17 +60,6 @@ const userController = {
     console.log(err);
     res.status(500).json(err)
   }
-},
-// Create a new user
-async createUser(req, res) {
-  try {
-    const user = await User.create(req.body)
-    const token = signToken(user);
-    res.json({ token, user });
-  } catch (err){
-    res.status(500).json(err);
-  } 
-
 },
 // Delete a user and associated posts
 async deleteUser(req, res) {

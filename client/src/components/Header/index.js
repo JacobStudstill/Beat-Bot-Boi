@@ -21,7 +21,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom'
 import Auth from '../../utils/auth'
-
+import logo from '../../assets/BeatBotzLogo.PNG'
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout', 'Message'];
 
@@ -52,7 +52,7 @@ function Header() {
 
   return (
     <AppBar sx={{ bgcolor: "#BA8C63" }} position="static">
-      <Container maxWidth="xl">
+      <Container maxWidth="">
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -70,7 +70,7 @@ function Header() {
               textDecoration: 'none',
             }}
           >
-            Anthym
+            <img src={logo} alt="" />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -137,7 +137,7 @@ function Header() {
               textDecoration: 'none',
             }}
           >
-            Anthym
+            <img src={logo} className="img-responsive rounded" alt="" />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {!user
@@ -160,7 +160,7 @@ function Header() {
                 </Button>
               ))}
           </Box>
-
+          
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

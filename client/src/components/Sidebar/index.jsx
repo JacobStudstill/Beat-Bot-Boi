@@ -37,7 +37,6 @@ const SideBar = () => {
         token_type
       }=getReturnedParamsFromSpotifyAuth(window.location.hash);
 
-      localStorage.clear()
       localStorage.setItem("accessToken",access_token);
       localStorage.setItem("tokenType",token_type);
       localStorage.setItem("expiresIn",expires_in);

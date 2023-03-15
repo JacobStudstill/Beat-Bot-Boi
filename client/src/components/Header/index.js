@@ -12,6 +12,13 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 // import AdbIcon from '@mui/icons-material/Adb';
+import Input from '@mui/material/Input';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom'
 import Auth from '../../utils/auth'
 import logo from '../../assets/BeatBotzLogo.PNG'
@@ -134,27 +141,61 @@ function Header() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {!user
-             ? loggedOut.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'black', display: 'block' }}
-              >
-                <Link style={{ textDecoration: "none", color: "white" }} to={`/${page}`}>{page}</Link>
-              </Button>
-             ))
-             : loggedIn.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'black', display: 'block' }}
-              >
-                <Link style={{ textDecoration: "none", color: "white" }} to={`/${page}`}>{page}</Link>
-              </Button>
-             ))}
+              ? loggedOut.map((page) => (
+                <Button
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'black', display: 'block' }}
+                >
+                  <Link style={{ textDecoration: "none", color: "white" }} to={`/${page}`}>{page}</Link>
+                </Button>
+              ))
+              : loggedIn.map((page) => (
+                <Button
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'black', display: 'block' }}
+                >
+                  <Link style={{ textDecoration: "none", color: "white" }} to={`/${page}`}>{page}</Link>
+                </Button>
+              ))}
           </Box>
-
-         
+          
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {settings.map((setting) => (
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+          
+          {/* Search Bar */}
+          <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+            <SearchIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+            <TextField id="input-with-sx" label="Search" variant="standard" />
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>

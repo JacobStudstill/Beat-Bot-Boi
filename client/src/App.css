@@ -641,6 +641,10 @@ img {
   padding: 5px
 }
 
+.signupIMG {
+  background-Image: url(https://images.pexels.com/photos/1337753/pexels-photo-1337753.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
+}
+
 /* special thanks to https://codetheweb.blog/demo/full-image-hero/ */
 
 @media (max-width: 1310px) {

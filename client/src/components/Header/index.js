@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 // import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom'
 import Auth from '../../utils/auth'
-
+import logo from '../../assets/BeatBotzLogo.PNG'
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout', 'Message'];
 
@@ -45,7 +45,7 @@ function Header() {
 
   return (
     <AppBar sx={{ bgcolor: "#BA8C63" }} position="static">
-      <Container maxWidth="xl">
+      <Container maxWidth="">
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -63,7 +63,7 @@ function Header() {
               textDecoration: 'none',
             }}
           >
-            Anthym
+            <img src={logo} alt="" />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -130,7 +130,7 @@ function Header() {
               textDecoration: 'none',
             }}
           >
-            Anthym
+            <img src={logo} className="img-responsive rounded" alt="" />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {!user
@@ -154,35 +154,7 @@ function Header() {
              ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+         
         </Toolbar>
       </Container>
     </AppBar>

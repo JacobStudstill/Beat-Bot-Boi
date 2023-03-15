@@ -51,7 +51,7 @@ async registerUser({ body }, res) {
       const users = await User.find({}).lean();
       res.json(users);
     } catch(err) {
-      console.log(err);
+      console.error(err);
       res.status(500);
     }
   },

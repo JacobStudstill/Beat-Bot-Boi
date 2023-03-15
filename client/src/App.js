@@ -12,7 +12,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import MessengerModal from './components/Message/DM';
 import Login from './components/Login';
+import Follow from './components/Follow'
 import SpotifyGetPlaylists from "./components/SpotifyGetPlaylists";
+
 
 
 function App() {
@@ -29,6 +31,7 @@ function App() {
         <Route path='/Home' element={<Home />} />
         <Route path='/Message' element={<MessengerModal />} />
         <Route path='/Upload' element={<Upload />} />
+        <Route path='/Follow' element={<Follow />} />
       </Routes>
       <Footer />
     </div>

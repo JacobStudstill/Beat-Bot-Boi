@@ -1,11 +1,11 @@
-const router = require('express').Router();
-const {
-    getEvents,
-    getEventbyId,
-    updateEvent,
-    deleteEvent,
-    addEvent,
+// const router = require('express').Router();
+// const {
+//     getEvents,
+//     getEventbyId,
+//     updateEvent,
+//     deleteEvent,
+//     addEvent,
 
-} = require('../../controllers/event-controller');
+// } = require('../../controllers/event-controller');
 
-module.exports = router;
+// module.exports = router;

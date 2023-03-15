@@ -12,6 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import MessengerModal from './components/Message/DM';
 import Login from './components/Login';
+import SpotifyGetPlaylists from "./components/SpotifyGetPlaylists";
 
 
 function App() {

@@ -8,7 +8,8 @@ const {
   addFriend,
   deleteFriend,
   login,
-  getCurrentUser
+  getCurrentUser,
+  searchUser
 } = require('../../controllers/user-controller');
 
 // import middleware
@@ -35,13 +36,15 @@ router.route('/:userId')
   // DELETE to remove user by its _id
   .delete(authMiddleware, deleteUser);
 
-   // /api/users/:userId/friends/:friendId
+// /api/users/:userId/friends/:friendId
 router.route('/:userId/friends/:friendId')
-// POST to add a new friend to a user's friend list
-    .post(authMiddleware, addFriend)
-// DELETE to remove a friend from a user's friend list
-    .delete(authMiddleware, deleteFriend)
+  // POST to add a new friend to a user's friend list
+  .post(authMiddleware, addFriend)
+  // DELETE to remove a friend from a user's friend list
+  .delete(authMiddleware, deleteFriend)
 
+router.route('/:username')
+  .get(searchUser)
 // export router so app can use it
 module.exports = router;
 

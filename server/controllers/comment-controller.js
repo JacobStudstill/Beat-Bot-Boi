@@ -1,79 +1,135 @@
-const { Post } = require('../models');
+const { Comment, Post, User } = require("../models");
 
-const replyController = {
-  // Create a new reply
-  async addReply(req, res) {
+const commentController = {
+  // Get all comments
+  async getComments(req, res) {
     try {
-      const post = await Post.findOneAndUpdate(
-        { _id: req.params.postId }, 
-        {$addToSet: { replies: {...req.body, commentId: req.params.commentId} }}, 
-        {new: true, runValidators: true });
-      res.json(post);
-    } catch(err) {
+      const comments = await Comment.find({})
+      res.json(comments)
+    } catch (err) {
+      console.log(err);
+      res.status(500);
+    }
+  },
+
+  // Get single comment
+  async getCommentById(req, res) {
+    try {
+      const comment = await Comment.findOne({ _id: req.params.commentId })
+        .select('-__v')
+      if (!comment) {
+        return res.status(404).json({ message: 'No comment found :(' })
+      }
+      res.json(comment)
+    } catch (err) {
+      res.status(500).json(err)
+    }
+  },
+
+  // add comment to post
+  async addComment(req, res) {
+    try {
+      const comment = await Comment.create(req.body)
+      await User.findOneAndUpdate(
+        { _id: req.body.userId },
+        { $push: { comments: comment } },
+        { new: true });
+        
+      await Post.findOneAndUpdate(
+        { _id: req.params.postId },
+        { $push: { comments: comment._id } },
+        { new: true });
+      res.json(comment);
+
+    } catch (err) {
       console.error(err)
       res.status(500).json(err);
     }
   },
-    // try {
-    //   const { commentId } = req.params;
-    //   const reply = await Reply.create({
-    //     text: req.body.text,
-    //     userId: req.body.userId,
-    //   });
-    //   const updatedComment = await Comment.findOneAndUpdate(
-    //     { _id: commentId },
-    //     { $addToSet: { replies: reply._id } },
-    //     { new: true }
-    //   );
-    //   res.json(updatedComment);
-    // } catch (err) {
-    //   console.error(err);
-    //   res.status(500).json(err);
-    // }
-  // },
-
-  // Update an existing reply
-  // async updateReply(req, res) {
-  //   try {
-  //     const { commentId, replyId } = req.params;
-  //     const updatedReply = await Reply.findOneAndUpdate(
-  //       { _id: replyId },
-  //       { $set: req.body },
-  //       { new: true }
-  //     );
-  //     res.json(updatedReply);
-  //   } catch (err) {
-  //     console.error(err);
-  //     res.status(500).json(err);
-  //   }
-  // },
-
-  // Delete an existing reply
-  async deleteReply(req, res) {
+   // add comment to comment
+  async comComment(req, res) {
     try {
-      const post = await Post.findOneAndUpdate(
-        { _id: req.params.postId }, 
-        {$pull: { replies: req.params.replyId }}, 
-        {new: true, runValidators: true});
-      res.json({message: 'Reply deleted!'});
-    }catch(err){
-      res.status(500).json(err);
-      }
-    }
-  //   try {
-  //     const { commentId, replyId } = req.params;
-  //     const deletedReply = await Reply.findOneAndDelete({ _id: replyId });
-  //     const updatedComment = await Comment.findOneAndUpdate(
-  //       { _id: commentId },
-  //       { $pull: { replies: replyId } },
-  //       { new: true }
-  //     );
-  //     res.json(updatedComment);
-  //   } catch (err) {
-  //     console.error(err);
-  //     res.status(500).json(err);
-  //   }
-  // },
-};
+      const comment = await Comment.create(req.body)
+      await User.findOneAndUpdate(
+        { _id: req.body.userId },
+        { $push: { comments: comment._id } },
+        { new: true });
 
-module.exports = replyController;
+      await Comment.findOneAndUpdate(
+        { _id: req.params.commentId },
+        { $push: { comments: comment._id } },
+        { new: true });
+      res.json(comment);
+
+    } catch (err) {
+      console.error(err)
+      res.status(500).json(err);
+    }
+  },
+
+  // delete- needed to clear db
+  async deleteAllComments(req, res) {
+    try {
+      const result = await Comment.deleteMany({});
+      res.json({ message: ` comments deleted.` });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json(err);
+    }
+  },
+
+  // delete a comment
+  async deleteComment(req, res) {
+    try {
+      const comment = await Comment.findOneAndDelete({ _id: req.params.commentId })
+      await User.findOneAndUpdate(
+        { _id: req.body.userId },
+        { $pull: { comments: comment._id } },
+        { new: true });
+      
+      await Post.findOneAndUpdate(
+        { _id: req.params.parentId },
+        { $pull: { comments: comment._id } },
+        { new: true });
+      
+      await Comment.findOneAndUpdate(
+        { _id: req.params.parentId },
+        { $pull: { comments: comment._id } },
+        { new: true });
+      res.json(comment);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+  
+  async vote(req, res) {
+    try {
+    const comment = await Comment.findById({_id: req.params.commentId});
+
+      //confirm comment exists
+      if (!comment) {
+        return res.status(404).json({ message: 'Comment not found' });
+      }
+
+      //checks if the user has already voted
+      const username = req.body.username;
+      const voteType = req.params.voteType;
+      console.log(comment);
+      console.log(voteType)
+      if (comment['upvotes'].includes(username) || comment['downvotes'].includes(username)) {
+        return res.status(400).json({ message: `User ${username} has already voted on this comment` });
+      }
+
+      //adds username to appropriate vote array
+      comment[voteType].push(username);
+      await comment.save();
+
+      res.json(comment);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json(err);
+    }
+  },
+}
+
+module.exports = commentController;

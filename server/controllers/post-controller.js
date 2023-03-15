@@ -54,31 +54,31 @@ const postController = {
       res.status(500).json(err);
     }
   },
-  // add a comment
-  async addComment(req, res) {
-    try {
-      const post = await Post.findOneAndUpdate(
-        { _id: req.params.postId },
-        { $addToSet: { comments: req.body } },
-        { new: true, runValidators: true });
-      res.json(post);
-    } catch (err) {
-      console.error(err)
-      res.status(500).json(err);
-    }
-  },
-  // delete a comment
-  async deleteComment(req, res) {
-    try {
-      const post = await Post.findOneAndUpdate(
-        { _id: req.params.postId },
-        { $pull: { comments: { _id: req.params.commentId } } },
-        { new: true, runValidators: true });
-      res.json({ message: 'Comment deleted!' });
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  },
+  // // add a comment
+  // async addComment(req, res) {
+  //   try {
+  //     const post = await Post.findOneAndUpdate(
+  //       { _id: req.params.postId },
+  //       { $addToSet: { comments: req.body } },
+  //       { new: true, runValidators: true });
+  //     res.json(post);
+  //   } catch (err) {
+  //     console.error(err)
+  //     res.status(500).json(err);
+  //   }
+  // },
+  // // delete a comment
+  // async deleteComment(req, res) {
+  //   try {
+  //     const post = await Post.findOneAndUpdate(
+  //       { _id: req.params.postId },
+  //       { $pull: { comments: { _id: req.params.commentId } } },
+  //       { new: true, runValidators: true });
+  //     res.json({ message: 'Comment deleted!' });
+  //   } catch (err) {
+  //     res.status(500).json(err);
+  //   }
+  // },
   
   async vote(req, res) {
     try {

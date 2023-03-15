@@ -1,16 +1,16 @@
-export const getSavedBookIds = () => {
-  const savedBookIds = localStorage.getItem('saved_books')
-    ? JSON.parse(localStorage.getItem('saved_books'))
+export const getFollowIds = () => {
+  const followIds = localStorage.getItem('saved_follows')
+    ? JSON.parse(localStorage.getItem('saved_follows'))
     : [];
 
-  return savedBookIds;
+  return followIds;
 };
 
-export const saveBookIds = (bookIdArr) => {
-  if (bookIdArr.length) {
-    localStorage.setItem('saved_books', JSON.stringify(bookIdArr));
+export const saveFollowIds = (followIdArr) => {
+  if (followIdArr.length) {
+    localStorage.setItem('saved_follows', JSON.stringify(followIdArr));
   } else {
-    localStorage.removeItem('saved_books');
+    localStorage.removeItem('saved_follows');
   }
 };
 

@@ -21,7 +21,7 @@ const Follow = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const data = await api.get('http://localhost:3001/api/users');
+        const { data } = await api.get('http://localhost:3001/api/users');
         setUsers(data);
         console.log(data)
       } catch (error) {
@@ -30,10 +30,37 @@ const Follow = () => {
     };
     fetchUsers();
   }, []);
+
+  // // create function to handle saving a book to our database
+  // const handleFollow = async (bookId) => {
+  //   // find the book in `searchedBooks` state by the matching id
+  //   const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
+
+  //   // get token
+  //   const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+  //   if (!token) {
+  //     return false;
+  //   }
+
+  //   try {
+  //     const response = await saveBook(bookToSave, token);
+
+  //     if (!response.ok) {
+  //       throw new Error('something went wrong!');
+  //     }
+
+  //     // if book successfully saves to user's account, save book id to state
+  //     setSavedBookIds([...savedBookIds, bookToSave.bookId]);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
+
   
   return (
     <>
-          
+        
         {users.map((user) => (      
         <Card key={user._id} sx={{ maxWidth: 345 }}>
         <CardMedia

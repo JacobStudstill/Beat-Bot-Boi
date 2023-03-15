@@ -536,6 +536,59 @@
   background-color: #BA8C63;
 }
 
+.four-container {
+  width: 80%;
+  margin: 10% auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.friendrequest{
+  width: 80%;
+  height:70%;
+}
+
+.binoculars{
+  width: 80%;
+  height:70%;
+}
+
+.moneyhand{
+  width: 80%;
+  height:70%;
+}
+
+.file{
+  width: 80%;
+  height:70%;
+}
+
+.four-icon {
+  width: 20%;
+  display: inline-block;
+  text-align: center;
+}
+
+.accordion-header{
+  border-radius: 2px;
+  border-color: black;
+}
+
+.accordion-button p{
+color:white;
+padding:0;
+margin:0;
+text-align: center;
+}
+
+
+.accordion-header button{
+background-color: #282424;
+}
+
+
+
 /* special thanks to https://codetheweb.blog/demo/full-image-hero/ */
 
 @media (max-width: 1310px) {
@@ -594,7 +647,7 @@
   }
 }
 
-@media (max-width: 450px) {
+@media screen and (max-width: 450px) {
   .flex-container {
     display: flex;
     flex-wrap: wrap;
@@ -617,6 +670,19 @@
     height: 16%;
     margin: 0% 1% 0% 1%;
   }
+  .four-icon {
+    width: 40%;
+  }
+  .four-container {
+    flex-direction: row;
+    align-items: center;
+  }
+  .four-container:nth-child(odd) {
+    margin-right: 20%;
+  }
+  
+
+
 
 }
 

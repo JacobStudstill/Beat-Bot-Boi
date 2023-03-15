@@ -28,15 +28,21 @@ export const loginUser = (userData) => {
   });
 };
 
-// save book data for a logged in user
-export const saveBook = (bookData, token) => {
+export const getUsers = ()=> {
   return fetch('/api/users', {
+    method: 'GET'
+  })
+};
+
+// add friend data for a logged in user
+export const followUser = (userId, friendId, token) => {
+  return fetch(`/api/${userId}/friends/${friendId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
       authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(bookData),
+    body: JSON.stringify(userId, friendId),
   });
 };
 

@@ -36,7 +36,7 @@ function App() {
         <Route path="/posts/:postId" element={<Posts />} />
 
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

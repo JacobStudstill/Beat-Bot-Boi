@@ -641,6 +641,11 @@ img {
   padding: 5px
 }
 
+.FAQ{
+  font-size: 200%;
+  margin-bottom: 1%;
+}
+
 /* special thanks to https://codetheweb.blog/demo/full-image-hero/ */
 
 @media (max-width: 1310px) {
@@ -715,6 +720,13 @@ img {
     background-position: center;
     background-size: cover;
     padding-bottom: .8%;
+  }
+
+  .navPhoto{
+    width:80%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .flex-item {

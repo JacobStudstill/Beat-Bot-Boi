@@ -257,7 +257,14 @@
   }
 }
 
+.spotifyPhotos{
+  width:80%;
+}
 
+.spotifyLink{
+  display: block;
+  font-size: 100%;
+}
 
 
 .wrapper {

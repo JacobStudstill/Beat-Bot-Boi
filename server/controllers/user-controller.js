@@ -103,21 +103,31 @@ async updateUser(req, res) {
   } 
 },
 // Add friend to friend list
-async addFriend(req, res) {
+// async addFriend({ user, body }, res) {
+//   console.log(user)
+//   try {
+//     const upDatedUser = await User.findOneAndUpdate(
+      
+//       { _id: user.Id }, 
+//       {$addToSet: { friends: body }}, 
+//       {new: true});
+
+//       // do we want friends to be added automatically or have to accept/follow back?
+//       // const friend = await User.findOneAndUpdate(
+//       //   { _id: req.params.friendId }, 
+//       //   {$addToSet: { friends: req.params.userId }}, 
+//       //   {new: true});
+      
+//     res.json(upDatedUser);
+    async addFriend(req, res) {
+      console.log(req.params.userId)
+      console.log(req.params.friendId)
   try {
     const user = await User.findOneAndUpdate(
       { _id: req.params.userId }, 
       {$addToSet: { friends: req.params.friendId }}, 
       {new: true});
-
-      // do we want friends to be added automatically or have to accept/follow back?
-      // const friend = await User.findOneAndUpdate(
-      //   { _id: req.params.friendId }, 
-      //   {$addToSet: { friends: req.params.userId }}, 
-      //   {new: true});
-      
-    res.json(user);
-    
+      res.json(user);
     } catch (err) {
       console.error(err);
       res.status(500).json(err);

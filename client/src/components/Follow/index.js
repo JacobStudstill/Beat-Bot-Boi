@@ -10,14 +10,18 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { followUser } from '../../utils/API';
+import { saveFollowIds, getFollowIds } from '../../utils/localStorage';
 
 
 const Follow = () => {
-  const token = Auth.loggedIn() ? Auth.getToken() : null;
-  const user = token ? Auth.getProfile().data.username : null;
   const [users, setUsers] = useState([]);
-  
-
+  console.log(users)
+  // create state to hold saved followId values
+  const [savedFollowIds, setSavedFollowIds] = useState([]);
+  const token = Auth.loggedIn() ? Auth.getToken() : null;
+  const currentUser = token ? Auth.getProfile().data._id : null;
+  console.log(currentUser)
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -31,31 +35,36 @@ const Follow = () => {
     fetchUsers();
   }, []);
 
-  // // create function to handle saving a book to our database
-  // const handleFollow = async (bookId) => {
-  //   // find the book in `searchedBooks` state by the matching id
-  //   const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
+  useEffect(() => {
+    return () => saveFollowIds(savedFollowIds);
+  });
+  console.log(savedFollowIds)
+  // create function to handle saving a user to our friends
+  const handleFollow = async (userId) => {
+    // find the user in users state by the matching id
+    const followToSave = users.find((user) => user._id === userId);
+    console.log(followToSave)
 
-  //   // get token
-  //   const token = Auth.loggedIn() ? Auth.getToken() : null;
+    // get token
+    // const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-  //   if (!token) {
-  //     return false;
-  //   }
+    if (!token) {
+      return false;
+    }
 
-  //   try {
-  //     const response = await saveBook(bookToSave, token);
+    try {
+      console.log(followToSave._id, currentUser, token)
+      const response = await followUser(followToSave._id, currentUser, token);
+      if (!response.ok) {
+        throw new Error('something went wrong!');
+      }
 
-  //     if (!response.ok) {
-  //       throw new Error('something went wrong!');
-  //     }
-
-  //     // if book successfully saves to user's account, save book id to state
-  //     setSavedBookIds([...savedBookIds, bookToSave.bookId]);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
+      // if user successfully saves to friends list account, save user id to state
+      setSavedFollowIds([...savedFollowIds, followToSave.userId]);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   
   return (
@@ -77,7 +86,17 @@ const Follow = () => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Follow</Button>
+        {Auth.loggedIn() && (
+                      <Button
+                        disabled={user.friends?.some((followerId) => followerId === currentUser)}
+                        className='btn-block btn-info'
+                        onClick={() => handleFollow(user._id)}>
+                        {user.friends?.some((followerId) => followerId === currentUser)
+                      
+                          ? 'Unfollow'
+                          : 'Follow'}
+                      </Button>
+                    )}
           <Button size="small">Check me out</Button>
         </CardActions>
       </Card>

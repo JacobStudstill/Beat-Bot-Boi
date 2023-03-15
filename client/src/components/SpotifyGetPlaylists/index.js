@@ -31,6 +31,7 @@ const SpotifyGetPlaylists = () => {
 
   return (
     <>
+    
       <button onClick={handleGetPlaylists}>Get Playlists</button>
       {data?.items ? data.items.map((item) => (<><img className="spotifyPhotos" src={item.images[0]?.url}  /><a className="spotifyLink" href={item.external_urls.spotify}>{item.name}</a><hr /></>)) : null}
     </>

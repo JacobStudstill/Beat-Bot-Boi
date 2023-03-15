@@ -1,4 +1,4 @@
-.friends {
+/* .friends {
   margin-bottom: 20px;
 }
 
@@ -58,4 +58,49 @@ border-radius: 5px;
 
 .sideContainer {
   padding: 20px 20px 0 0;
+} */
+
+
+.playlist {
+  width: 20%;
+  max-width: 20%;
+  background-color: #fff;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.playlist button {
+  margin-left: 14%;
+}
+
+.playlist h4{
+  text-align: center;
+}
+
+.profileItem{
+  width:30%
+}
+
+.profileItem h4{
+  text-align: center;
+}
+
+.friends{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.friend {
+  display: flex;
+  flex-direction: column;
+  width:20%;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.friend img {
+  cursor: pointer;
+  width:60%;
+  height: auto;
 }

@@ -43,9 +43,21 @@
 
 .username {
   font-size: 24px;
-
+padding: 1% 0;
 }
 
 .bio {
   font-weight: 300;
+}
+
+.share{
+  margin-bottom: 3%;
+}
+
+.profilePosts{
+  width:50%;
+}
+
+.inline{
+  display: inline-flex;
 }

@@ -2,15 +2,15 @@
 const express = require('express');
 // Set up port
 const PORT = process.env.PORT || 3001;
-// Create instance of express app
+
+
 const app = express();
-// Import DB connection
 const db = require('./config/connection');
-// const cors = require('cors');
+const cors = require('cors');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use(cors());
+app.use(cors());
 
 // Import routes
 const routes = require('./routes');

@@ -2,9 +2,9 @@
 const express = require('express');
 // Set up port
 const PORT = process.env.PORT || 3001;
-// Create instance of express app
+
+
 const app = express();
-// Import DB connection
 const db = require('./config/connection');
 const cors = require('cors');
 

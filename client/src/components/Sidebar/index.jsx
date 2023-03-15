@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './sidebar.css';
 import profilep from '../../assets/profilep.jpeg'
 import spotify from '../../assets/spotify.jpeg'
+import SpotifyGetPlaylists from '../SpotifyGetPlaylists/';
 
 // Used to login to Spotify
 const client_id = '07395201571e48f9aebdaf2365b27928';
@@ -11,6 +13,7 @@ const space_delimiter = "%20"
 const scopes_url_param = scope.join(space_delimiter)
 const spotfiy_authoirze_endpoint = 'https://accounts.spotify.com/authorize';
 const response = '&response_type=token&show_dialog=true';
+const PLAYLISTS_ENDPOINT = 	"https://api.spotify.com/v1/me/playlists"
 
 const getReturnedParamsFromSpotifyAuth = (hash) => {
   const stringAfterHashtag = hash.substring(1);
@@ -41,9 +44,12 @@ const SideBar = () => {
 
     }
   })
+
   const handleLogin = () =>{
     window.location = `${spotfiy_authoirze_endpoint}?client_id=${client_id}&redirect_uri=${redirect_uri}&scopes=${scope}${response}`
   }
+
+
   return (
     <>
     <div className="sidebar">
@@ -57,6 +63,7 @@ const SideBar = () => {
           <div className="rightbarInfoItem">
             <span className="info1">Checkout my playlist!</span>
             <span className="info2"><button onClick={handleLogin}>Login to Spotify</button> </span>
+            <SpotifyGetPlaylists />
             <img className="playList" src={spotify} alt="spotify"/>
           </div>
           

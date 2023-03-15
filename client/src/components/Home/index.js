@@ -80,7 +80,7 @@ export default function Feed() {
                       </Avatar>
                     }
                     //Make the post title a link
-                    title={<Link to={`/posts/`} className="card-link">{post.postTitle}</Link>}
+                    title={<Link to={`/posts/${post._id}`} className="card-link">{post.postTitle}</Link>}
                     subheader={new Date(post.createdAt).toLocaleDateString()}
                   />
                   <StyledCardContent>

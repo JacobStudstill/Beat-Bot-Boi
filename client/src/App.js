@@ -32,8 +32,8 @@ function App() {
         <Route path='/Home' element={<Home />} />
         <Route path='/Message' element={<MessengerModal />} />
         <Route path='/Upload' element={<Upload />} />
-        <Route path='/Posts' element={<Posts />} />
         <Route path='/Follow' element={<Follow />} />
+        <Route path="/posts/:postId" element={<Posts />} />
 
       </Routes>
       <Footer />

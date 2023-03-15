@@ -46,7 +46,7 @@ const SideBar = () => {
   })
 
   const handleLogin = () => {
-    window.location = `${spotfiy_authoirze_endpoint}?client_id=${client_id}&redirect_uri=${redirect_uri}&scopes=${scope}${response}`
+    window.location = `${spotfiy_authoirze_endpoint}?client_id=${client_id}&redirect_uri=${redirect_uri}&scopes=${scopes_url_param}${response}`
   }
 
 

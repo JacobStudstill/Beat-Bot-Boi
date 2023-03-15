@@ -38,7 +38,7 @@ function App() {
         <Route path="/posts/new" element={<PostCreate />} />
 
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

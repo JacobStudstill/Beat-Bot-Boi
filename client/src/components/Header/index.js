@@ -62,7 +62,7 @@ function Header() {
               textDecoration: 'none',
             }}
           >
-            <img src={logo} alt="" />
+            <img className='navPhoto' src={logo} alt="" />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -130,7 +130,7 @@ function Header() {
               textDecoration: 'none',
             }}
           >
-            <img src={logo} className="img-responsive rounded" alt="" />
+            <img src={logo} className="navPhoto" alt="" />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {!user

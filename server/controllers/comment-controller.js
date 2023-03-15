@@ -88,12 +88,12 @@ const commentController = {
         { new: true });
       
       await Post.findOneAndUpdate(
-        { _id: req.params.postId },
+        { _id: req.params.parentId },
         { $pull: { comments: comment._id } },
         { new: true });
       
       await Comment.findOneAndUpdate(
-        { _id: req.params.commentId },
+        { _id: req.params.parentId },
         { $pull: { comments: comment._id } },
         { new: true });
       res.json(comment);

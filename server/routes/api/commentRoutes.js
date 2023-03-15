@@ -16,7 +16,7 @@ router.route('/').get(getComments)
 // /api/comments/:commentId
 router.route('/:commentId').get(getCommentById)
 // .put(editComment)
-.delete(deleteComment);
+router.route('/:commentId/:parentId').delete(deleteComment);
 
 // /api/comments/:postId
 router.route('/:postId').post(addComment)

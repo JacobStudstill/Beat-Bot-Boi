@@ -5,8 +5,8 @@ const commentSchema = new Schema({
     commentBody: { type: String, required: true, maxLength: 500 },
     username: { type: String, required: true },
     userId: { type: String },
-    upvotes: {type: Number},
-    downvotes: {type: Number},
+    upvotes: {type: [String]},
+    downvotes: {type: [String] },
     comments: { type: [String] },
     createdAt: { type: Date, default: Date.now }, 
 },
@@ -18,13 +18,13 @@ const commentSchema = new Schema({
     }
 );
 
-// commentSchema.virtual('commentUpvotes').get(function () {
-//     return this.upvotes.length
-// });
+commentSchema.virtual('commentUpvotes').get(function () {
+    return this.upvotes.length
+});
 
-// commentSchema.virtual('commentDownvotes').get(function () {
-//     return this.downvotes.length
-// });
+commentSchema.virtual('commentDownvotes').get(function () {
+    return this.downvotes.length
+});
 
 const Comment = model('Comment', commentSchema)
 module.exports = Comment;

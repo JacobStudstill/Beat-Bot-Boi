@@ -46,26 +46,37 @@ const commentController = {
       res.status(500).json(err);
     }
   },
-  // // add comment to comment
-  // async commentComment(req, res) {
-  //   try {
-  //     const comment = await Comment.create(req.body)
-  //     await User.findOneAndUpdate(
-  //       { _id: req.body.userId },
-  //       { $push: { comments: comment._id } },
-  //       { new: true });
+   // add comment to comment
+  async comComment(req, res) {
+    try {
+      const comment = await Comment.create(req.body)
+      await User.findOneAndUpdate(
+        { _id: req.body.userId },
+        { $push: { comments: comment._id } },
+        { new: true });
 
-  //     await Comment.findOneAndUpdate(
-  //       { _id: req.body.commentId },
-  //       { $push: { comments: comment._id } },
-  //       { new: true });
-  //     res.json(comment);
+      await Comment.findOneAndUpdate(
+        { _id: req.params.commentId },
+        { $push: { comments: comment._id } },
+        { new: true });
+      res.json(comment);
 
-  //   } catch (err) {
-  //     console.error(err)
-  //     res.status(500).json(err);
-  //   }
-  // },
+    } catch (err) {
+      console.error(err)
+      res.status(500).json(err);
+    }
+  },
+
+  // delete- needed to clear db
+  async deleteAllComments(req, res) {
+    try {
+      const result = await Comment.deleteMany({});
+      res.json({ message: ` comments deleted.` });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json(err);
+    }
+  },
 
   // delete a comment
   async deleteComment(req, res) {
@@ -77,12 +88,12 @@ const commentController = {
         { new: true });
       
       await Post.findOneAndUpdate(
-        { _id: req.body.postId },
+        { _id: req.params.postId },
         { $pull: { comments: comment._id } },
         { new: true });
       
       await Comment.findOneAndUpdate(
-        { _id: req.body.commentId },
+        { _id: req.params.commentId },
         { $pull: { comments: comment._id } },
         { new: true });
       res.json(comment);
@@ -103,6 +114,8 @@ const commentController = {
       //checks if the user has already voted
       const username = req.body.username;
       const voteType = req.params.voteType;
+      console.log(comment);
+      console.log(voteType)
       if (comment['upvotes'].includes(username) || comment['downvotes'].includes(username)) {
         return res.status(400).json({ message: `User ${username} has already voted on this comment` });
       }

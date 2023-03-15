@@ -7,6 +7,7 @@ const {
   // editComment,
   deleteComment,
   vote,
+  deleteAllComments
 } = require('../../controllers/comment-controller.js');
 
 // /api/comments
@@ -20,13 +21,15 @@ router.route('/:commentId').get(getCommentById)
 // /api/comments/:postId
 router.route('/:postId').post(addComment)
 
-// /api/comments/:commentId/comments
-// router.route('/:commentId/comments').post(comComment)
+// /api/comments/:commentId/
+router.route('/:commentId/').post(comComment)
 
 // /api/comments/:postId/:commentId
 router.route('/:postId/:commentId').delete(deleteComment)
 
 // api/comments/:commentId/vote/voteType
 router.route('/:commentId/vote/:voteType').put(vote)
+
+router.route('/').delete(deleteAllComments);
 
 module.exports = router;

@@ -4,6 +4,7 @@ const commentSchema = new Schema({
     parentId: { type: String, required: true},
     commentBody: { type: String, required: true, maxLength: 500 },
     username: { type: String, required: true },
+    userId: { type: String },
     upvotes: {type: Number},
     downvotes: {type: Number},
     comments: { type: [String] },

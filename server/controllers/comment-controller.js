@@ -31,8 +31,8 @@ const commentController = {
     try {
       const comment = await Comment.create(req.body)
       await User.findOneAndUpdate(
-        { username: req.body.username },
-        { $push: { comments: comment._id } },
+        { _id: req.body.userId },
+        { $push: { comments: comment } },
         { new: true });
         
       await Post.findOneAndUpdate(

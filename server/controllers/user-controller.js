@@ -125,7 +125,7 @@ async updateUser(req, res) {
   try {
     const user = await User.findOneAndUpdate(
       { _id: req.params.userId }, 
-      {$addToSet: { friends: req.params.friendId }}, 
+      {$addToSet: { friends: req.body.friendId }}, 
       {new: true});
       res.json(user);
     } catch (err) {

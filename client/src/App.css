@@ -587,7 +587,11 @@ text-align: center;
 background-color: #282424;
 }
 
-
+img {
+  height: auto;
+  width: 150px;
+  padding: 5px
+}
 
 /* special thanks to https://codetheweb.blog/demo/full-image-hero/ */
 

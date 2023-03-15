@@ -3,21 +3,25 @@ const {
   getComments,
   getCommentById,
   addComment,
-  editComment,
+  comComment,
+  // editComment,
   deleteComment,
   vote,
 } = require('../../controllers/comment-controller.js');
 
 // /api/comments
-router.route('/').get(getComments).post(addComment);
+router.route('/').get(getComments)
 
-// /api/comments/:id
-router.route('/:postId').get(getCommentById)
+// /api/comments/:commentId
+router.route('/:commentId').get(getCommentById)
 // .put(editComment)
 .delete(deleteComment);
 
-// /api/comments/:postId/comments
-router.route('/:postId/comments').post(addComment)
+// /api/comments/:postId
+router.route('/:postId').post(addComment)
+
+// /api/comments/:commentId/comments
+// router.route('/:commentId/comments').post(comComment)
 
 // /api/comments/:postId/:commentId
 router.route('/:postId/:commentId').delete(deleteComment)

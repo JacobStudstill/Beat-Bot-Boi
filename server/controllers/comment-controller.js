@@ -1,4 +1,4 @@
-const { Comment, Post } = require("../models");
+const { Comment, Post, User } = require("../models");
 
 const commentController = {
   // Get all comments
@@ -25,12 +25,18 @@ const commentController = {
       res.status(500).json(err)
     }
   },
-  // create a new comment
+
+  // add comment to post
   async addComment(req, res) {
     try {
       const comment = await Comment.create(req.body)
       await User.findOneAndUpdate(
-        { _id: req.body.userId },
+        { username: req.body.username },
+        { $push: { comments: comment._id } },
+        { new: true });
+        
+      await Post.findOneAndUpdate(
+        { _id: req.params.postId },
         { $push: { comments: comment._id } },
         { new: true });
       res.json(comment);
@@ -40,6 +46,26 @@ const commentController = {
       res.status(500).json(err);
     }
   },
+  // // add comment to comment
+  // async commentComment(req, res) {
+  //   try {
+  //     const comment = await Comment.create(req.body)
+  //     await User.findOneAndUpdate(
+  //       { _id: req.body.userId },
+  //       { $push: { comments: comment._id } },
+  //       { new: true });
+
+  //     await Comment.findOneAndUpdate(
+  //       { _id: req.body.commentId },
+  //       { $push: { comments: comment._id } },
+  //       { new: true });
+  //     res.json(comment);
+
+  //   } catch (err) {
+  //     console.error(err)
+  //     res.status(500).json(err);
+  //   }
+  // },
 
   // delete a comment
   async deleteComment(req, res) {
@@ -47,6 +73,16 @@ const commentController = {
       const comment = await Comment.findOneAndDelete({ _id: req.params.commentId })
       await User.findOneAndUpdate(
         { _id: req.body.userId },
+        { $pull: { comments: comment._id } },
+        { new: true });
+      
+      await Post.findOneAndUpdate(
+        { _id: req.body.postId },
+        { $pull: { comments: comment._id } },
+        { new: true });
+      
+      await Comment.findOneAndUpdate(
+        { _id: req.body.commentId },
         { $pull: { comments: comment._id } },
         { new: true });
       res.json(comment);
@@ -59,7 +95,7 @@ const commentController = {
     try {
     const comment = await Comment.findById({_id: req.params.commentId});
 
-      //confirm post exists
+      //confirm comment exists
       if (!comment) {
         return res.status(404).json({ message: 'Comment not found' });
       }
@@ -82,6 +118,5 @@ const commentController = {
     }
   },
 }
-
 
 module.exports = commentController;

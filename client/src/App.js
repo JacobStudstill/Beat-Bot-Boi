@@ -14,7 +14,8 @@ import MessengerModal from './components/Message/DM';
 import Login from './components/Login';
 import Follow from './components/Follow'
 import SpotifyGetPlaylists from "./components/SpotifyGetPlaylists";
-import Posts from './components/Posts'
+import PostView from './components/Posts/view'
+import PostCreate from './components/Posts/create'
 
 
 
@@ -33,7 +34,8 @@ function App() {
         <Route path='/Message' element={<MessengerModal />} />
         <Route path='/Upload' element={<Upload />} />
         <Route path='/Follow' element={<Follow />} />
-        <Route path="/posts/:postId" element={<Posts />} />
+        <Route path="/posts/:postId" element={<PostView />} />
+        <Route path="/posts/new" element={<PostCreate />} />
 
       </Routes>
       <Footer />

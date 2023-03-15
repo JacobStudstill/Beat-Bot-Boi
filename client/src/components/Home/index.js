@@ -8,6 +8,8 @@ import CardContent from '@mui/material/CardContent';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
+import Button from '@mui/material/Button';
+
 
 const Container = styled('div')({
   display: 'flex',
@@ -62,6 +64,9 @@ export default function Feed() {
       <div className='homeFeed'>
         {token && <h1>Welcome {user}!</h1>}
         <h1>Feed</h1>
+        <Button variant="contained" href="/posts/new">
+  Create Post
+</Button>
         {posts.length > 0 ? (
           posts.map((post) => {
             let videoUrl = '';

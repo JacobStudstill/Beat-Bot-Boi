@@ -19,7 +19,9 @@ const Follow = () => {
   // userId for routes
   const currentUser = token ? Auth.getProfile().data._id : null;
   // currentUser data to access friend list
-  const loggedInUser = token ? Auth.getProfile().data : null;
+  const loggedInUser = token ? Auth.getProfile() : null;
+  
+  // const [loggedInUser, setLoggedInUser]= useState([])
   console.log(loggedInUser)
   console.log(currentUser)
   console.log('Token:', token)
@@ -27,7 +29,7 @@ const Follow = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const { data } = await api.get('http://localhost:3001/api/users');
+        const { data } = await api.get('http://localhost:3001/api/users/');
         setUsers(data);
         console.log(data)
       } catch (error) {
@@ -37,6 +39,8 @@ const Follow = () => {
     fetchUsers();
   }, [upUser, following]);
 
+  
+  
   const handleFollow = async (friendId) => {
     console.log('handleFollow called');
     console.log('friendId:', friendId);

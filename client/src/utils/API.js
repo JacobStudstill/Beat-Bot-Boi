@@ -36,13 +36,13 @@ export const getUsers = ()=> {
 
 // add friend data for a logged in user
 export const followUser = (userId, friendId, token) => {
-  return fetch(`/api/${userId}/friends/${friendId}`, {
-    method: 'PUT',
+  return fetch(`/api/users/${userId}/friends/${friendId}`, {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(userId, friendId),
+    // body: JSON.stringify(userId, friendId),
   });
 };
 

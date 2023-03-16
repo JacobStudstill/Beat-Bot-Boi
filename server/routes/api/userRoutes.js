@@ -36,6 +36,7 @@ router.route('/:userId')
   // DELETE to remove user by its _id
   .delete(authMiddleware, deleteUser);
 
+
 // /api/users/:userId/friends/:friendId
 router.route('/:userId/friends/:friendId')
   // POST to add a new friend to a user's friend list

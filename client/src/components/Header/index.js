@@ -99,7 +99,7 @@ function Header() {
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">
                       {/* mobile nav dropdown */}
-                      <Link style={{ textDecoration: "none", color: "black" }} to={`/${page}`}>{page}</Link>
+                      <Link style={{ textDecoration: "none", color: "black",}} to={`/${page}`}>{page}</Link>
                     </Typography>
                   </MenuItem>
                 ))
@@ -140,7 +140,7 @@ function Header() {
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: 'black', display: 'block' }}
                 >
-                  <Link style={{ textDecoration: "none", color: "white" }} to={`/${page}`}>{page}</Link>
+                  <Link style={{ textDecoration: "none", color: "white", className:`${page}` }} to={`/${page}`}>{page}</Link>
                 </Button>
               ))
               : loggedIn.map((page) => (
@@ -149,7 +149,7 @@ function Header() {
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: 'black', display: 'block' }}
                 >
-                  <Link style={{ textDecoration: "none", color: "white" }} to={`/${page}`}>{page}</Link>
+                  <Link style={{ textDecoration: "none", color: "white", className:`${page}` }} to={`/${page}`}>{page}</Link>
                 </Button>
               ))}
           </Box>

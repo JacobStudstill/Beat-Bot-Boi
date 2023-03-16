@@ -2,6 +2,14 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './sidebar.css';
 import profilep from '../../assets/profilep.jpeg'
+import jacobp from '../../assets/jacobAvitar.jpg'
+import ashlynnp from '../../assets/ashlynnAvitar.jpg'
+import domp from '../../assets/domAvitar.jpg'
+import ericp from '../../assets/ericAvitar.jpg'
+import alexp from '../../assets/alexAvitar.jpg'
+import johnp from '../../assets/johnAvitar.jpg'
+import mateop from '../../assets/mateoAvitar.jpg'
+import sethp from '../../assets/sethAvitar.jpg'
 import spotify from '../../assets/spotify.jpeg'
 import SpotifyGetPlaylists from '../SpotifyGetPlaylists/';
 import Home from '../Home'
@@ -80,29 +88,36 @@ const SideBar = () => {
           <h4> User friends </h4>
           <div className="friends">
             <div className="friend">
-              <img className="friendImg" src={profilep} alt="" />
+              <img className="friendImg" src={domp} alt="" />
               <span className="friendName">Dom</span>
             </div>
             <div className="friend">
-              <img src={profilep} alt="" className="friendImg" />
+              <img src={ericp} alt="" className="friendImg" />
               <span className="friendName">Eric</span>
             </div>
             <div className="friend">
-              <img src={profilep} alt="" className="friendImg"
-              />
+              <img src={jacobp} alt="" className="friendImg"/>
               <span className="friendName">Jacob</span>
             </div>
             <div className="friend">
-              <img src={profilep} alt="" className="friendImg" />
+              <img src={ashlynnp} alt="" className="friendImg" />
+              <span className="friendName">Ashlynn</span>
+            </div>
+            <div className="friend">
+              <img src={johnp} alt="" className="friendImg" />
+              <span className="friendName">John</span>
+            </div>
+            <div className="friend">
+              <img src={sethp} alt="" className="friendImg" />
+              <span className="friendName">Seth</span>
+            </div>
+            <div className="friend">
+              <img className="friendImg" src={alexp} alt="" />
               <span className="friendName">Alex</span>
             </div>
             <div className="friend">
-              <img src={profilep} alt="" className="friendImg" />
-              <span className="friendName">Alex</span>
-            </div>
-            <div className="friend">
-              <img src={profilep} alt="" className="friendImg" />
-              <span className="friendName">Alex</span>
+              <img className="friendImg" src={mateop} alt="" />
+              <span className="friendName">Mateo</span>
             </div>
 
           </div>

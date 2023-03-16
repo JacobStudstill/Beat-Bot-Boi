@@ -1,7 +1,9 @@
 import React from 'react';
 import './profile.css';
 import profilep from '../../assets/profilep.jpeg'
-import cover from '../../assets/cov.jpeg'
+import robertp from '../../assets/Robert.jpg'
+import coverp from '../../assets/tape.jpg'
+import cover from '../../assets/tape.jpg'
 import Home from '../Home'
 import Share from '../Share/index'
 import SideBar from '../Sidebar/index'
@@ -23,8 +25,8 @@ const Profile = () => {
         <div className="profileContent">
           <div className="profRight">
             <div className="profCover">
-              <img className="cover" src={cover} alt="cover"/>
-              <img className="profileP" src={profilep} alt="user"/>
+              <img className="cover" src={coverp} alt="cover"/>
+              <img className="profileP" src={robertp} alt="user"/>
             </div>
             <div className="info">
             <h4 className="username">{user}</h4>

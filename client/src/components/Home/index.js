@@ -48,6 +48,7 @@ export default function Feed() {
         const response = await fetch('/api/posts');
         const data = await response.json();
         setPosts(data);
+        setPosts(data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
       } catch (error) {
         console.error(error);
       }
@@ -78,16 +79,24 @@ export default function Feed() {
             return (
               <div key={post._id}>
                 <StyledCard>
-                  <CardHeader
-                    avatar={
-                      <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                        {post.username[0]}
-                      </Avatar>
-                    }
-                    //Make the post title a link
-                    title={<Link to={`/posts/${post._id}`} className="card-link">{post.postTitle}</Link>}
-                    subheader={new Date(post.createdAt).toLocaleDateString()}
-                  />
+                <CardHeader
+  avatar={
+    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+      {post.username[0]}
+    </Avatar>
+  }
+  title={<Link to={`/posts/${post._id}`} className="card-link">{post.postTitle}</Link>}
+  subheader={
+    <div>
+      <Typography variant="subtitle2" color="text.secondary">
+        {new Date(post.createdAt).toLocaleDateString()}   
+        </Typography>   
+        <Typography variant="subtitle2" color="text.secondary">
+        👍: {post.postUpvotes} 👎: {post.postDownvotes}
+      </Typography>
+    </div>
+  }
+/>
                   <StyledCardContent>
                     {videoUrl && <StyledIframe src={videoUrl} />}
                     {/* Use the CardText component to apply the "card-text" class to the post text */}

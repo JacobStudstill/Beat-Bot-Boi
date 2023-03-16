@@ -35,7 +35,7 @@ const Follow = () => {
       }
     };
     fetchUsers();
-  }, [upUser]);
+  }, [upUser, following]);
 
   const handleFollow = async (friendId) => {
     console.log('handleFollow called');
@@ -47,16 +47,20 @@ const Follow = () => {
         console.log('not logged in')
        return false;
         }
-    try {
+        
+        try {
       if (!loggedInUser?.friends?.includes(friendId)) {
         const { data } = await api.post(`http://localhost:3001/api/users/${currentUser}/friends`, {friendId}, {token});
         console.log(data)
+        
         const updatedUser = users.find(user => user._id === currentUser);
         setUpUser(updatedUser);
-      const isFollowing = updatedUser?.friends?.includes(friendId);
-      setFollowing(isFollowing);
-      setUsers(prevUsers => {
-        const updatedUsers = prevUsers.map(user => {
+      
+        const isFollowing = updatedUser?.friends?.includes(friendId);
+          setFollowing(isFollowing);
+          setUsers(prevUsers => {
+        
+            const updatedUsers = prevUsers.map(user => {
           if (user._id === currentUser) {
             return {
               ...user,
@@ -64,7 +68,8 @@ const Follow = () => {
             };
           }
           return user;
-        });
+          });
+
         return updatedUsers;
       });
 
@@ -113,14 +118,14 @@ const Follow = () => {
           </Typography>
         </CardContent>
         <CardActions>
-        {Auth.loggedIn() && (
+        {token && (
           <Button onClick={() => handleFollow(user._id)}>
-          { loggedInUser?.friends?.includes(user._id)
+          { following 
             ? 'Unfollow'
             : 'Follow'}
             </Button>
                     )}
-          <Button size="small">Check me out</Button>
+          {/* <Button size="small">Unfollow</Button> */}
         </CardActions>
       </Card>
           ))}

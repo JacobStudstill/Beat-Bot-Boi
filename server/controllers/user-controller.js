@@ -139,7 +139,7 @@ async deleteFriend(req, res) {
   try {
     const user = await User.findOneAndUpdate(
       { _id: req.params.userId }, 
-      {$pull: { friends: req.params.friendId }},
+      {$pull: { friends: req.body.friendId }},
       {new: true});
       res.json({message: 'Friend deleted :('})
   } catch (err) {

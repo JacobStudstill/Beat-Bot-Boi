@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://domspadafora:Fatboy25.@cluster0.9fynl8f.mongodb.net/anthym?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/beat-bots', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

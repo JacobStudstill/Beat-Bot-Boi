@@ -60,14 +60,62 @@ export default function Feed() {
   const user = token ? Auth.getProfile().data.username : null;
   const userInit = user ? user[0] : null;
 
+  const handleVote = async (voteType, postId) => {
+    if (!user) {
+      // if user is not logged in, show an alert message
+      alert("Please log in to vote.");
+      return;
+    }
+  
+    console.log("Sending request...");
+  
+    // Create an object with the username to be sent in the request body
+    const dataToSend = {
+      username: user
+    };
+    console.log("Request data:", JSON.stringify(dataToSend));
+  
+    try {
+      const response = await fetch(`/api/posts/${postId}/${voteType}s`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dataToSend)
+      });
+  
+      const data = await response.json();
+      if (!data) {
+        console.error("Failed to vote: response data is undefined.");
+        return;
+      }
+  
+      const updatedPosts = posts.map((p) => {
+        if (p._id === postId) {
+          return {
+            ...p,
+            postUpvotes: data.upvotes.length,
+            postDownvotes: data.downvotes.length,
+          };
+        } else {
+          return p;
+        }
+      });
+      setPosts(updatedPosts);
+  
+    } catch (error) {
+      console.error("Failed to vote.", error);
+    }
+  };
+
   return (
     <Container>
       <div className='homeFeed'>
         {token && <h1>Welcome {user}!</h1>}
         <h1>Feed</h1>
         <Button variant="contained" href="/posts/new">
-  Create Post
-</Button>
+          Create Post
+        </Button>
         {posts.length > 0 ? (
           posts.map((post) => {
             let videoUrl = '';
@@ -79,24 +127,31 @@ export default function Feed() {
             return (
               <div key={post._id}>
                 <StyledCard>
-                <CardHeader
-  avatar={
-    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-      {post.username[0]}
-    </Avatar>
-  }
-  title={<Link to={`/posts/${post._id}`} className="card-link">{post.postTitle}</Link>}
-  subheader={
-    <div>
-      <Typography variant="subtitle2" color="text.secondary">
-        {new Date(post.createdAt).toLocaleDateString()}   
-        </Typography>   
-        <Typography variant="subtitle2" color="text.secondary">
-        👍: {post.postUpvotes} 👎: {post.postDownvotes}
-      </Typography>
-    </div>
-  }
-/>
+                  <CardHeader
+                    avatar={
+                      <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                        {post.username[0]}
+                      </Avatar>
+                    }
+                    title={<Link to={`/posts/${post._id}`} className="card-link">{post.postTitle}</Link>}
+                    subheader={
+                      <div>
+                        <Typography variant="subtitle2" color="text.secondary">
+                          {new Date(post.createdAt).toLocaleDateString()}
+                        </Typography>
+                        <Typography variant="subtitle2" color="text.secondary">
+                          <div>
+                            <Button onClick={() => handleVote("upvote", post._id)} variant="outlined" sx={{ mr: 2 }}>
+                              👍 {post.postUpvotes}
+                            </Button>
+                            <Button onClick={() => handleVote("downvote", post._id)} variant="outlined">
+                              👎 {post.postDownvotes}
+                            </Button>
+                          </div>
+                        </Typography>
+                      </div>
+                    }
+                  />
                   <StyledCardContent>
                     {videoUrl && <StyledIframe src={videoUrl} />}
                     {/* Use the CardText component to apply the "card-text" class to the post text */}

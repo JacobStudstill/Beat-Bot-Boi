@@ -28,7 +28,7 @@ router.route('/:commentId/').post(comComment)
 router.route('/:postId/:commentId').delete(deleteComment)
 
 // api/comments/:commentId/vote/voteType
-router.route('/:commentId/vote/:voteType').put(vote)
+router.route('/:commentId/:voteType').put(vote)
 
 router.route('/').delete(deleteAllComments);
 

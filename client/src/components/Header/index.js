@@ -21,7 +21,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom'
 import Auth from '../../utils/auth'
-import logo from '../../assets/BeatBotzLogo.PNG'
+import logo from '../../assets/navBarPhoto.png'
 
 
 function Header() {
@@ -140,22 +140,22 @@ function Header() {
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: 'black', display: 'block' }}
                 >
-                  <Link style={{ textDecoration: "none", color: "white", className:`${page}` }} to={`/${page}`}>{page}</Link>
+                  <Link style={{ textDecoration: "none", color: "black", className:`${page}` }} to={`/${page}`}>{page}</Link>
                 </Button>
               ))
               : loggedIn.map((page) => (
                 <Button
                   key={page}
-                  onClick={Auth.logout}
+                  className={page}
                   sx={{ my: 2, color: 'black', display: 'block' }}
                 >
-                  <Link style={{ textDecoration: "none", color: "white", className:`${page}` }} to={`/${page}`}>{page}</Link>
+                  <Link style={{ textDecoration: "none", color: "black" }} to={`/${page}`}>{page}</Link>
                 </Button>
               ))}
           </Box>
 
           {/* Search Bar */}
-          <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+          <Box sx={{ display: 'flex',justifyContent: 'center' , alignItems: 'flex-end', paddingBottom: 2.5 }}>
             <SearchIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
             <TextField id="input-with-sx" label="Search" variant="standard" />
           </Box>

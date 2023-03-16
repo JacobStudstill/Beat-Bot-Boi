@@ -70,11 +70,11 @@ function Comment({ comment, onVote, comments, setComments }) {
       alert("Please log in to vote.");
       return;
     }
-  
+
     const dataToSend = {
       username: user
     };
-  
+
     try {
       const response = await fetch(`/api/comments/${commentId}/${voteType}s`, {
         method: 'PUT',
@@ -83,39 +83,39 @@ function Comment({ comment, onVote, comments, setComments }) {
         },
         body: JSON.stringify(dataToSend)
       });
-  
+
       const data = await response.json();
       if (!data) {
         console.error("Failed to vote: response data is undefined.");
         return;
       }
-  
+
       // Find the index of the comment that was voted on
       const commentIndex = comments.findIndex((comment) => comment._id === commentId);
-  
+
       // If the comment is not found, do nothing
       if (commentIndex === -1) {
         console.error(`Failed to update comment: comment with ID ${commentId} not found.`);
         return;
       }
-  
+
       // Update the specific comment object with the new upvote and downvote counts
       const updatedComment = {
         ...comments[commentIndex],
         commentUpvotes: data.upvotes.length,
         commentDownvotes: data.downvotes.length,
       };
-  
+
       // Create a new array that replaces the old comment object with the updated one
       const updatedComments = [
         ...comments.slice(0, commentIndex),
         updatedComment,
         ...comments.slice(commentIndex + 1),
       ];
-  
+
       // Update the state with the new comments array
       setComments(updatedComments);
-  
+
     } catch (error) {
       console.error("Failed to vote.", error);
       console.log("URL:", `/api/comments/${commentId}/${voteType}s`);
@@ -192,15 +192,15 @@ export default function PostDetail() {
       alert("Please log in to vote.");
       return;
     }
-  
+
     console.log("Sending request...");
-  
+
     // Create an object with the username to be sent in the request body
     const dataToSend = {
       username: user
     };
     console.log("Request data:", JSON.stringify(dataToSend));
-  
+
     try {
       const response = await fetch(`/api/posts/${postId}/${voteType}s`, {
         method: 'PUT',
@@ -209,34 +209,34 @@ export default function PostDetail() {
         },
         body: JSON.stringify(dataToSend)
       });
-  
+
       const data = await response.json();
       if (!data) {
         console.error("Failed to vote: response data is undefined.");
         return;
       }
-  
+
       // Update the state of the post object with the new upvote and downvote counts
       setPost({
         ...post,
         postUpvotes: data.upvotes.length,
         postDownvotes: data.downvotes.length,
       });
-  
+
     } catch (error) {
       console.error("Failed to vote.", error);
     }
   };
 
   return (
-    <div>
-      <h1>{post.postTitle}</h1>
+    <div className='viewPostsContainer'>
+      <h1 className='textAlignTitle'>{post.postTitle}</h1>
       <p>Posted By: {post.username}</p>
       <p>Created At: {new Date(post.createdAt).toLocaleString([], { hour: 'numeric', minute: 'numeric', hour12: true })
       }</p>
       <p>Tags: {post.tags.join(', ')}</p>
       <p>Post Link: <a href={post.postLink}>{post.postLink}</a></p>
-      <p>Post Text: {post.postText}</p>
+      <p className='textAlignTitle'>Post Text: {post.postText}</p>
       <div>
         <Button onClick={() => handleVote("upvote", post._id)} variant="outlined" sx={{ mr: 2 }}>
           👍 {post.postUpvotes}

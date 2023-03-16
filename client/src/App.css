@@ -19,9 +19,9 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-top: .5%;
+  margin-top: 5%;
   margin-left: auto;
-  margin-bottom:1%; 
+  margin-bottom: 1%;
   height: 80vh;
   width: 50%;
   background-color: rgb(36, 35, 35);
@@ -35,7 +35,7 @@
 
 .text-container {
   margin-left: auto;
-  margin-right:auto;
+  margin-right: auto;
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -44,7 +44,7 @@
 
 }
 
-.text-container h2{
+.text-container h2 {
   font-weight: 700;
   text-align: center;
 }
@@ -57,7 +57,7 @@
   font-weight: 500;
 }
 
-.text-container a{
+.text-container a {
   color: black;
   text-decoration: underline;
   font-weight: bold;
@@ -80,81 +80,85 @@
 .line__4,
 .line__5,
 .line__6,
-.line__7{
-  white-space: nowrap; /* keep text in one line */
-  overflow: hidden; /* hide text behind the cursor */
+.line__7 {
+  white-space: nowrap;
+  /* keep text in one line */
+  overflow: hidden;
+  /* hide text behind the cursor */
   margin: 0.5rem auto;
   font-family: "Caveat";
   font-size: 2rem;
   font-weight: bold;
 }
+
 .line__1 {
 
   /* define animation types for text + cursor */
-  animation: animated-text__1 4s steps(30, end) 1s 1 normal both,
+  animation: animated-text__1 3s steps(30, end) 1s 1 normal both,
     animated-cursor__1 900ms steps(30, end);
-    -webkit-animation-delay: 8s;
-    animation-delay: 8s;
+  -webkit-animation-delay: 7s;
+  animation-delay: 7s;
 }
 
 .line__2 {
 
   /* define animation types for text + cursor */
-  animation: animated-text__2 4s steps(30, end) 1s 1 normal both,
+  animation: animated-text__2 3s steps(30, end) 1s 1 normal both,
     animated-cursor__2 900ms steps(30, end) 8;
-  -webkit-animation-delay: 12s;
-  animation-delay: 12s;
+  -webkit-animation-delay: 10s;
+  animation-delay: 10s;
 }
 
 .line__3 {
 
   /* define animation types for text + cursor */
-  animation: animated-text__3 4s steps(30, end) 1s 1 normal both,
-  animated-cursor__3 900ms steps(30, end);
-  -webkit-animation-delay: 16s;
-  animation-delay: 16s;
+  animation: animated-text__3 3s steps(30, end) 1s 1 normal both,
+    animated-cursor__3 900ms steps(30, end);
+  -webkit-animation-delay: 13s;
+  animation-delay: 13s;
 }
 
 .line__4 {
 
   /* define animation types for text + cursor */
-  animation: animated-text__4 4s steps(30, end) 1s 1 normal both,
-    animated-cursor__4 900ms steps(30, end) ;
-  -webkit-animation-delay: 20s;
-  animation-delay: 20s;
+  animation: animated-text__4 3s steps(30, end) 1s 1 normal both,
+    animated-cursor__4 900ms steps(30, end);
+  -webkit-animation-delay: 16s;
+  animation-delay: 16s;
 }
 
 .line__5 {
 
   /* define animation types for text + cursor */
-  animation: animated-text__5 4s steps(30, end) 1s 1 normal both,
+  animation: animated-text__5 3s steps(30, end) 1s 1 normal both,
     animated-cursor__5 900ms steps(30, end) 8;
-  -webkit-animation-delay: 24s;
-  animation-delay: 24s;
+  -webkit-animation-delay: 19s;
+  animation-delay: 19s;
 }
 
 .line__6 {
 
   /* define animation types for text + cursor */
-  animation: animated-text__6 4s steps(30, end) 1s 1 normal both,
+  animation: animated-text__6 3s steps(30, end) 1s 1 normal both,
     animated-cursor__6 900ms steps(30, end) 8;
-  -webkit-animation-delay: 28s;
-  animation-delay: 28s;
+  -webkit-animation-delay: 22s;
+  animation-delay: 22s;
 }
 
 .line__7 {
   text-align: right;
   /* define animation types for text + cursor */
-  animation: animated-text__6 4s steps(30, end) 1s 1 normal both,
+  animation: animated-text__6 3s steps(30, end) 1s 1 normal both,
     animated-cursor__6 900ms steps(30, end) 8;
-  -webkit-animation-delay: 32s;
-  animation-delay: 32s;
+  -webkit-animation-delay: 26s;
+  animation-delay: 26s;
 }
 
 @keyframes animated-cursor__1 {
   from {
     border-right-color: #000000;
   }
+
   to {
     border-right-color: #BA8C63;
   }
@@ -164,22 +168,27 @@
   from {
     border-right-color: #BA8C63;
   }
+
   to {
     border-right-color: #BA8C63;
   }
 }
+
 @keyframes animated-cursor__3 {
   from {
     border-right-color: #BA8C63;
   }
+
   to {
     border-right-color: #BA8C63;
   }
 }
+
 @keyframes animated-cursor__4 {
   from {
     border-right-color: #BA8C63;
   }
+
   to {
     border-right-color: #BA8C63;
   }
@@ -189,6 +198,7 @@
   from {
     border-right-color: #BA8C63;
   }
+
   to {
     border-right-color: #BA8C63;
   }
@@ -198,6 +208,7 @@
   from {
     border-right-color: #BA8C63;
   }
+
   to {
     border-right-color: #BA8C63;
   }
@@ -207,6 +218,7 @@
   from {
     width: 0;
   }
+
   to {
     width: 38rem;
   }
@@ -216,6 +228,7 @@
   from {
     width: 0;
   }
+
   to {
     width: 36rem;
   }
@@ -225,6 +238,7 @@
   from {
     width: 0;
   }
+
   to {
     width: 38rem;
   }
@@ -234,6 +248,7 @@
   from {
     width: 0;
   }
+
   to {
     width: 38rem;
   }
@@ -243,6 +258,7 @@
   from {
     width: 0;
   }
+
   to {
     width: 40rem;
   }
@@ -252,16 +268,20 @@
   from {
     width: 0;
   }
+
   to {
     width: 38rem;
   }
 }
 
-.spotifyPhotos{
-  width:80%;
+.spotifyPhotos {
+  width: 60%;
+  margin-left: 5vw;
+  margin-right: auto;
 }
 
-.spotifyLink{
+.spotifyLink {
+  text-align: center;
   display: block;
   font-size: 100%;
 }
@@ -488,7 +508,7 @@
 
 
 #thehero {
-  width: 99.1vw;
+  width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -532,7 +552,7 @@
   padding: 0 0 0 0;
 }
 
-.backgroundColor{
+.backgroundColor {
   background-color: #BA8C63;
 }
 
@@ -544,24 +564,24 @@
   justify-content: space-between;
 }
 
-.friendrequest{
+.friendrequest {
   width: 80%;
-  height:70%;
+  height: 70%;
 }
 
-.binoculars{
+.binoculars {
   width: 80%;
-  height:70%;
+  height: 70%;
 }
 
-.moneyhand{
+.moneyhand {
   width: 80%;
-  height:70%;
+  height: 70%;
 }
 
-.file{
+.file {
   width: 80%;
-  height:70%;
+  height: 70%;
 }
 
 .four-icon {
@@ -570,24 +590,63 @@
   text-align: center;
 }
 
-.accordion-header{
+.accordion-header {
   border-radius: 2px;
   border-color: black;
 }
 
-.accordion-button p{
-color:white;
-padding:0;
-margin:0;
-text-align: center;
+.accordion-button p {
+  color: white;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.accordion-button:active {
+  background-color: #282424;
 }
 
 
-.accordion-header button{
-background-color: #282424;
+.accordion-header button {
+  background-color: #282424;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #282424 !important;
+}
+
+.sharePosts{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 
+.right{
+clear:right;
+}
+
+.post h1{
+  font-size:2rem
+}
+
+
+.homeFeed h1{
+  text-align: center;
+}
+
+img {
+  width: 70px;
+  padding: 0;
+  margin: 0;
+}
+
+
+.FAQ{
+  font-size: 200%;
+  margin-bottom: 1%;
+
+}
 
 /* special thanks to https://codetheweb.blog/demo/full-image-hero/ */
 
@@ -599,7 +658,7 @@ background-color: #282424;
     align-items: center;
     margin-top: 1%;
     margin-left: auto;
-    margin-right:1%;
+    margin-right: 1%;
     height: 80vh;
     width: 100%;
     background-color: rgb(36, 35, 35);
@@ -608,11 +667,11 @@ background-color: #282424;
     background-size: cover;
     padding-bottom: .8%;
   }
-  
+
   .text-container {
     margin-top: 1%;
     margin-left: auto;
-    margin-right:auto;
+    margin-right: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -627,11 +686,11 @@ background-color: #282424;
     margin: .6% 2%;
   }
 
-  .text-container h2{
+  .text-container h2 {
     font-weight: 700;
     text-align: center;
   }
-  
+
   .text-container p {
     width: 80vw;
     text-align: center;
@@ -655,7 +714,7 @@ background-color: #282424;
     align-items: center;
     margin-top: 1%;
     margin-left: auto;
-    margin-right:1%;
+    margin-right: 1%;
     height: 60vh;
     width: 100%;
     background-color: rgb(36, 35, 35);
@@ -665,22 +724,32 @@ background-color: #282424;
     padding-bottom: .8%;
   }
 
+  .navPhoto{
+    width:80%;
+    height: auto;
+    margin:0;
+    padding:0
+  }
+
   .flex-item {
     width: 25%;
     height: 16%;
     margin: 0% 1% 0% 1%;
   }
+
   .four-icon {
     width: 40%;
   }
+
   .four-container {
     flex-direction: row;
     align-items: center;
   }
+
   .four-container:nth-child(odd) {
     margin-right: 20%;
   }
-  
+
 
 
 

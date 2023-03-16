@@ -22,7 +22,7 @@ function Copyright(props) {
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        Anthym
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -86,11 +86,12 @@ export default function Signup() {
   // };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme} >
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
+            
             marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
@@ -105,7 +106,7 @@ export default function Signup() {
           </Typography>
           <Box component="form" noValidate onSubmit={handleFormSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <TextField
                   autoComplete="given-name"
                   name="username"
@@ -118,16 +119,8 @@ export default function Signup() {
                   value={userFormData.username}
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  // required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                />
-              </Grid>
+            
+
               <Grid item xs={12}>
                 <TextField
                   required
@@ -153,12 +146,7 @@ export default function Signup() {
                   value={userFormData.password}
                 />
               </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid>
+
             </Grid>
             <Button
               type="submit"

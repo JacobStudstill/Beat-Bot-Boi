@@ -24,7 +24,7 @@ function Copyright(props) {
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        Anthym
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -97,12 +97,13 @@ export default function Login() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://source.unsplash.com/random)',
+            backgroundImage: 'url(https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61LQNwFWRcL._AC_UF894,1000_QL80_.jpg)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
             backgroundSize: 'cover',
             backgroundPosition: 'center',
+            backgroundSize:'100%'
           }}
         />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -119,7 +120,7 @@ export default function Login() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              Login
             </Typography>
             <Box component="form" noValidate validated={validated} onSubmit={handleFormSubmit} sx={{ mt: 1 }}>
             <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>

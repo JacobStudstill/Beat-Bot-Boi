@@ -8,6 +8,8 @@ import CardContent from '@mui/material/CardContent';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
+import Button from '@mui/material/Button';
+
 
 const Container = styled('div')({
   display: 'flex',
@@ -15,18 +17,26 @@ const Container = styled('div')({
 });
 
 const StyledCard = styled(Card)({
-  maxWidth: 345,
+  maxWidth: '800px',
+  minHeight: '300px',
   margin: '10px',
   boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
 });
 
 const StyledCardContent = styled(CardContent)({
+  width: '100%',
   display: 'flex',
   justifyContent: 'center',
 });
 
 const CardText = styled(Typography)({
   textDecoration: 'none',
+});
+
+// Define a new styled component for the iframe
+const StyledIframe = styled("iframe")({
+  width: "100%",
+  height: "500px", // Update the height to your desired value
 });
 
 export default function Feed() {
@@ -38,6 +48,7 @@ export default function Feed() {
         const response = await fetch('/api/posts');
         const data = await response.json();
         setPosts(data);
+        setPosts(data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
       } catch (error) {
         console.error(error);
       }
@@ -51,9 +62,12 @@ export default function Feed() {
 
   return (
     <Container>
-      <div>
+      <div className='homeFeed'>
         {token && <h1>Welcome {user}!</h1>}
         <h1>Feed</h1>
+        <Button variant="contained" href="/posts/new">
+  Create Post
+</Button>
         {posts.length > 0 ? (
           posts.map((post) => {
             let videoUrl = '';
@@ -65,18 +79,26 @@ export default function Feed() {
             return (
               <div key={post._id}>
                 <StyledCard>
-                  <CardHeader
-                    avatar={
-                      <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                        {post.username[0]}
-                      </Avatar>
-                    }
-                    //Make the post title a link
-                    title={<Link to={`/posts/`} className="card-link">{post.postTitle}</Link>}
-                    subheader={new Date(post.createdAt).toLocaleDateString()}
-                  />
+                <CardHeader
+  avatar={
+    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+      {post.username[0]}
+    </Avatar>
+  }
+  title={<Link to={`/posts/${post._id}`} className="card-link">{post.postTitle}</Link>}
+  subheader={
+    <div>
+      <Typography variant="subtitle2" color="text.secondary">
+        {new Date(post.createdAt).toLocaleDateString()}   
+        </Typography>   
+        <Typography variant="subtitle2" color="text.secondary">
+        👍: {post.postUpvotes} 👎: {post.postDownvotes}
+      </Typography>
+    </div>
+  }
+/>
                   <StyledCardContent>
-                    {videoUrl && <iframe src={videoUrl}></iframe>}
+                    {videoUrl && <StyledIframe src={videoUrl} />}
                     {/* Use the CardText component to apply the "card-text" class to the post text */}
                     <CardText variant="body2" color="text.secondary" className="card-text">
                       {post.postText}

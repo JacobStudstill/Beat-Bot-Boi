@@ -19,22 +19,22 @@ const userController = {
   },
 
   // Register a user, sign a token, and send it back (to client/src/components/SignUpForm.js)
-async registerUser({ body }, res) {
-  try {
-    const user = await User.create(body)
-    if (!user) {
-      return res.status(400).json({ message: 'Something is wrong!' });
+  async registerUser({ body }, res) {
+    try {
+      const user = await User.create(body)
+      if (!user) {
+        return res.status(400).json({ message: 'Something is wrong!' });
+      }
+      const token = signToken(user);
+      res.json({ token, user });
+    } catch (err) {
+      console.log(err)
+      res.status(500).json(err);
     }
-    const token = signToken(user);
-    res.json({ token, user });
-  } catch (err){
-    console.log(err)
-    res.status(500).json(err);
-  } 
 
   },
-   // get a single user by either their id or their username
-   async getCurrentUser({ user = null, params }, res) {
+  // get a single user by either their id or their username
+  async getCurrentUser({ user = null, params }, res) {
     const foundUser = await User.findOne({
       $or: [{ _id: user ? user._id : params.id }, { username: params.username }],
     });
@@ -50,52 +50,53 @@ async registerUser({ body }, res) {
     try {
       const users = await User.find({}).lean();
       res.json(users);
-    } catch(err) {
+    } catch (err) {
       console.error(err);
       res.status(500);
     }
   },
 
-// Find a single user by ID
- async getUserById(req, res) {
-  try {
-    const user = await User.findOne({ _id: req.params.userId })
-      .select('-__v')
-      // Get associated friends and posts 
-      .populate('friends')
-      .populate('posts')
-    if (!user) {
-        return res.status(404).json({message: 'No user with that ID :('})
-    }
-    res.json(user)
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err)
-  }
-},
-// Delete a user and associated posts
-async deleteUser(req, res) {
-  try {
-    const user = await User.findOneAndDelete({ _id: req.params.userId })
-      await Post.deleteMany({ _id: {$in: user.posts} });
+  // Find a single user by ID
+  async getUserById(req, res) {
+    try {
+      const user = await User.findOne({ _id: req.params.userId })
+        .select('-__v')
+        // Get associated friends and posts 
+        .populate('friends')
+        .populate('posts')
       if (!user) {
-        return res.status(404).json({message: 'No user with that ID :('})
+        return res.status(404).json({ message: 'No user with that ID :(' })
+      }
+      res.json(user)
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err)
     }
-      res.json({message: 'User and posts deleted!'})
-  } catch (err) {
-    console.error(err);
-    res.status(500).json(err);
-  } 
-},
-// Update a user
-async updateUser(req, res) {
-  try {
-    const user = await User.findOneAndUpdate( 
-      // req.body, 
-      { _id: req.params.userId },
-      {$set: req.body}, 
-      {new: true, runValidators: true });
+  },
+  // Delete a user and associated posts
+  async deleteUser(req, res) {
+    try {
+      const user = await User.findOneAndDelete({ _id: req.params.userId })
+      await Post.deleteMany({ _id: { $in: user.posts } });
+      if (!user) {
+        return res.status(404).json({ message: 'No user with that ID :(' })
+      }
+      res.json({ message: 'User and posts deleted!' })
+    } catch (err) {
+      console.error(err);
+      res.status(500).json(err);
+    }
+  },
+  // Update a user
+  async updateUser(req, res) {
+    try {
+      const user = await User.findOneAndUpdate(
+        // req.body, 
+        { _id: req.params.userId },
+        { $set: req.body },
+        { new: true, runValidators: true });
       console.log(user);
+
     res.json(user);
   } catch (err) {
     console.error(err);
@@ -145,8 +146,23 @@ async deleteFriend(req, res) {
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
+    
+    // Search user
+  async searchUser(req, res) {
+    try {
+      const user = await User.findOne({
+        username: req.params.username
+      });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json(err);
+
     }
-  }
 }
+
+}
+
+
+
 
 module.exports = userController;

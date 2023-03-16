@@ -19,7 +19,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-top: .5%;
+  margin-top: 5%;
   margin-left: auto;
   margin-bottom: 1%;
   height: 80vh;
@@ -508,7 +508,7 @@
 
 
 #thehero {
-  width: 99.1vw;
+  width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;

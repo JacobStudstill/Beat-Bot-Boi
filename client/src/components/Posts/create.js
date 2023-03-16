@@ -6,19 +6,22 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import PostAddIcon from '@mui/icons-material/PostAdd';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import jwt from 'jwt-decode';
+// import { useNavigate } from 'react-router-dom';
 
-// const token = Auth.getToken();
-// const decodedToken = jwt(token);
+
+
 const theme = createTheme();
-// const username = decodedToken.data.username;
-// console.log(username)
+
 
 export default function CreatePost() {
+  function navigateToPage(pageUrl) {
+    window.location.href = pageUrl;
+  }
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -41,8 +44,8 @@ export default function CreatePost() {
     });
     const result = await response.json();
     console.log(result);
+    navigateToPage('/Home')
   };
-  
 
   return (
     <ThemeProvider theme={theme}>
@@ -56,8 +59,8 @@ export default function CreatePost() {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
+          <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
+            <PostAddIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Create A New Post

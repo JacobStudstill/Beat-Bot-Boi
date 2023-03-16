@@ -19,8 +19,9 @@ const Container = styled('div')({
 const StyledCard = styled(Card)({
   maxWidth: '800px',
   minHeight: '300px',
-  margin: '10px',
+  margin: '20px',
   boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+
 });
 
 const StyledCardContent = styled(CardContent)({
@@ -112,7 +113,6 @@ export default function Feed() {
     <Container>
       <div className='homeFeed'>
         {token && <h1>Welcome {user}!</h1>}
-        <h1>Feed</h1>
         <Button variant="contained" href="/posts/new">
           Create Post
         </Button>
@@ -136,7 +136,7 @@ export default function Feed() {
                     title={<Link to={`/posts/${post._id}`} className="card-link">{post.postTitle}</Link>}
                     subheader={
                       <div>
-                        <Typography variant="subtitle2" color="text.secondary">
+                        <Typography variant="subtitle1" color="text.secondary" className='postDate'>
                           {new Date(post.createdAt).toLocaleDateString()}
                         </Typography>
                         <Typography variant="subtitle2" color="text.secondary">
@@ -155,7 +155,7 @@ export default function Feed() {
                   <StyledCardContent>
                     {videoUrl && <StyledIframe src={videoUrl} />}
                     {/* Use the CardText component to apply the "card-text" class to the post text */}
-                    <CardText variant="body2" color="text.secondary" className="card-text">
+                    <CardText variant="body1" color="text.secondary" className="card-text">
                       {post.postText}
                     </CardText>
                   </StyledCardContent>

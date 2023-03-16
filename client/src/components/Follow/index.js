@@ -1,4 +1,3 @@
-// import React from 'react'
 import Auth from '../../utils/auth';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
@@ -9,20 +8,17 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { followUser } from '../../utils/API';
-import axios from 'axios'
-
-// import { saveFollowIds, getFollowIds } from '../../utils/localStorage';
-
 
 const Follow = () => {
+  // all user states
   const [users, setUsers] = useState([]);
+  // updated user states
   const [upUser, setUpUser] = useState();
   console.log(users)
-  // create state to hold saved followId values
-  // const [savedFollowIds, setSavedFollowIds] = useState([]);
   const token = Auth.loggedIn() ? Auth.getToken() : null;
+  // userId for routes
   const currentUser = token ? Auth.getProfile().data._id : null;
+  // currentUser data to access friend list
   const loggedInUser = token ? Auth.getProfile().data : null;
   console.log(loggedInUser)
   console.log(currentUser)
@@ -71,12 +67,14 @@ const Follow = () => {
         });
         return updatedUsers;
       });
+
       } else {
         const { unfollowData } = await api.delete(`http://localhost:3001/api/users/${currentUser}/friends`, {friendId}, {token});
         const unfollowUser = users.find(user => user._id === currentUser);
-        setUpUser(unfollowUser);
+          setUpUser(unfollowUser);
       const isNotFollowing = unfollowUser?.friends?.includes(friendId);
-      setFollowing(isNotFollowing);
+        setFollowing(isNotFollowing);
+
       setUsers(prevUsers => {
         const unfollowedUsers = prevUsers.map(user => {
           if (user._id === currentUser) {
@@ -89,51 +87,12 @@ const Follow = () => {
         });
         return unfollowedUsers;
       });
-      }
-     
+      } 
    
-  } catch (error) {
-    console.log(error);
-  }
-     
+    } catch (error) {
+        console.log(error);
+    } 
   };
-
-//   return (
-//     <button onClick={handleFollow}>
-//       {isFollowing ? 'Following' : 'Follow'}
-//     </button>
-//   );
-// };
-  // useEffect(() => {
-  //   return () => saveFollowIds(savedFollowIds);
-  // });
-  // console.log(savedFollowIds)
-  // create function to handle saving a user to our friends
-  // const handleFollow = async (userId) => {
-    // find the user in users state by the matching id
-  //   const followToSave = users.find((user) => user._id === userId);
-  //   console.log(followToSave)
-
-    
-
-  //   if (!token) {
-  //     return false;
-  //   }
-
-  //   try {
-  //     console.log(followToSave._id, currentUser, token)
-  //     const response = await followUser(followToSave._id, currentUser, token);
-  //     if (!response.ok) {
-  //       throw new Error('something went wrong!');
-  //     }
-
-  //     // if user successfully saves to friends list account, save user id to state
-  //     setSavedFollowIds([...savedFollowIds, followToSave.userId]);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-
   
   return (
     <>
@@ -159,21 +118,11 @@ const Follow = () => {
           { loggedInUser?.friends?.includes(user._id)
             ? 'Unfollow'
             : 'Follow'}
-        </Button>
-                    //   <Button
-                    //     disabled={user.friends?.some((followerId) => followerId === currentUser)}
-                    //     className='btn-block btn-info'
-                    //     onClick={() => handleFollow(user._id, token)}>
-                    //     {user.friends?.some((followerId) => followerId === currentUser)
-                      
-                    //       ? 'Unfollow'
-                    //       : 'Follow'}
-                    //   </Button>
+            </Button>
                     )}
           <Button size="small">Check me out</Button>
         </CardActions>
       </Card>
-           
           ))}
     </>
   );

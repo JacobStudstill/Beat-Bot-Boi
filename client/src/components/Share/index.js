@@ -3,6 +3,7 @@ import {PermMedia, Label,Room, MusicNote} from "@mui/icons-material"
 import profilep from '../../assets/profilep.jpeg'
 import React from 'react'
 import Auth from '../../utils/auth';
+import robertp from '../../assets/Robert.jpg'
 
 
 const Share = () => {
@@ -12,7 +13,7 @@ const Share = () => {
     <div className="share">
       <div className="shareContainer">
         <div className="shareT">
-          <img className="profilep" src={profilep} alt="" />
+          <img className="profilep" src={robertp} alt="" />
           <input
             placeholder={`What's on your mind ${user}?`}
             className="shareInput"

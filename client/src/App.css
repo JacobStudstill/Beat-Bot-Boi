@@ -94,64 +94,64 @@
 .line__1 {
 
   /* define animation types for text + cursor */
-  animation: animated-text__1 4s steps(30, end) 1s 1 normal both,
+  animation: animated-text__1 3s steps(30, end) 1s 1 normal both,
     animated-cursor__1 900ms steps(30, end);
-  -webkit-animation-delay: 8s;
-  animation-delay: 8s;
+  -webkit-animation-delay: 7s;
+  animation-delay: 7s;
 }
 
 .line__2 {
 
   /* define animation types for text + cursor */
-  animation: animated-text__2 4s steps(30, end) 1s 1 normal both,
+  animation: animated-text__2 3s steps(30, end) 1s 1 normal both,
     animated-cursor__2 900ms steps(30, end) 8;
-  -webkit-animation-delay: 12s;
-  animation-delay: 12s;
+  -webkit-animation-delay: 10s;
+  animation-delay: 10s;
 }
 
 .line__3 {
 
   /* define animation types for text + cursor */
-  animation: animated-text__3 4s steps(30, end) 1s 1 normal both,
+  animation: animated-text__3 3s steps(30, end) 1s 1 normal both,
     animated-cursor__3 900ms steps(30, end);
-  -webkit-animation-delay: 16s;
-  animation-delay: 16s;
+  -webkit-animation-delay: 13s;
+  animation-delay: 13s;
 }
 
 .line__4 {
 
   /* define animation types for text + cursor */
-  animation: animated-text__4 4s steps(30, end) 1s 1 normal both,
+  animation: animated-text__4 3s steps(30, end) 1s 1 normal both,
     animated-cursor__4 900ms steps(30, end);
-  -webkit-animation-delay: 20s;
-  animation-delay: 20s;
+  -webkit-animation-delay: 16s;
+  animation-delay: 16s;
 }
 
 .line__5 {
 
   /* define animation types for text + cursor */
-  animation: animated-text__5 4s steps(30, end) 1s 1 normal both,
+  animation: animated-text__5 3s steps(30, end) 1s 1 normal both,
     animated-cursor__5 900ms steps(30, end) 8;
-  -webkit-animation-delay: 24s;
-  animation-delay: 24s;
+  -webkit-animation-delay: 19s;
+  animation-delay: 19s;
 }
 
 .line__6 {
 
   /* define animation types for text + cursor */
-  animation: animated-text__6 4s steps(30, end) 1s 1 normal both,
+  animation: animated-text__6 3s steps(30, end) 1s 1 normal both,
     animated-cursor__6 900ms steps(30, end) 8;
-  -webkit-animation-delay: 28s;
-  animation-delay: 28s;
+  -webkit-animation-delay: 22s;
+  animation-delay: 22s;
 }
 
 .line__7 {
   text-align: right;
   /* define animation types for text + cursor */
-  animation: animated-text__6 4s steps(30, end) 1s 1 normal both,
+  animation: animated-text__6 3s steps(30, end) 1s 1 normal both,
     animated-cursor__6 900ms steps(30, end) 8;
-  -webkit-animation-delay: 32s;
-  animation-delay: 32s;
+  -webkit-animation-delay: 26s;
+  animation-delay: 26s;
 }
 
 @keyframes animated-cursor__1 {

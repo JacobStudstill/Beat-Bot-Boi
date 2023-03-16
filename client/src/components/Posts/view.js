@@ -125,7 +125,7 @@ function Comment({ comment, onVote, comments, setComments }) {
   return (
     <div style={{ marginLeft: 20 }}>
       <p>{comment.username}</p>
-      <p>"{comment.commentBody}"</p>
+      <p>"{comment.commentBody} "Replies: ({comment.comments.length})</p>
       <Button onClick={() => handleCommentVote("upvote", comment._id)} variant="outlined" sx={{ mr: 2 }}>
         👍 {comment.commentUpvotes}
       </Button>
@@ -245,7 +245,7 @@ export default function PostDetail() {
           👎 {post.postDownvotes}
         </Button>
       </div>
-      <h2>Comments ({comments.length})</h2>
+      <h3>Comments ({comments.length})</h3>
       {comments.map((comment) => (
   <Comment key={comment._id} comment={comment} comments={comments} setComments={setComments} />
 ))}

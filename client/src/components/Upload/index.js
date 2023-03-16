@@ -35,10 +35,10 @@ export default function UploadButtons() {
     if (!formData) {console.log('Empty')}
     try {
       console.log("This is the form data", formData)
-      // const response = await fetch('http://localhost:3001/api/upload', {
       const response = await axios.post('/api/upload', formData, {
         headers: {'Content-Type': 'multipart/form-data'}
       });
+      console.log("Response URL:", response.config.url);
       // console.log('')
       const data = await response.json();
       console.log(data);

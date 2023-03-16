@@ -15,7 +15,7 @@ router.route('/:postId').get(getPostById)
 
 .delete(deletePost);
 
-router.route('/:postId/vote/:voteType').put(vote)
+router.route('/:postId/:voteType').put(vote)
 
 
 

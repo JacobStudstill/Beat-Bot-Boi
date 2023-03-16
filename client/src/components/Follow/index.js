@@ -10,18 +10,23 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { followUser } from '../../utils/API';
-import { areOptionsEqual } from '@mui/base';
+import axios from 'axios'
+
 // import { saveFollowIds, getFollowIds } from '../../utils/localStorage';
 
 
 const Follow = () => {
   const [users, setUsers] = useState([]);
+  const [upUser, setUpUser] = useState();
   console.log(users)
   // create state to hold saved followId values
   // const [savedFollowIds, setSavedFollowIds] = useState([]);
   const token = Auth.loggedIn() ? Auth.getToken() : null;
   const currentUser = token ? Auth.getProfile().data._id : null;
+  const loggedInUser = token ? Auth.getProfile().data : null;
+  console.log(loggedInUser)
   console.log(currentUser)
+  console.log('Token:', token)
   const [following, setFollowing] = useState(false);
   useEffect(() => {
     const fetchUsers = async () => {
@@ -34,32 +39,62 @@ const Follow = () => {
       }
     };
     fetchUsers();
-  }, []);
+  }, [upUser]);
 
   const handleFollow = async (friendId) => {
+    console.log('handleFollow called');
+    console.log('friendId:', friendId);
+    console.log('currentUser:', currentUser);
+    console.log('following:', following);
     console.log('Following button clicked');
        if (!token) {
         console.log('not logged in')
        return false;
         }
     try {
-      
-      await api.post(`http://localhost:3001/api/users/${currentUser}/friends`, {friendId});
-      const updatedUsers = users.map(user => {
-        if (user._id === friendId) {
-          return {
-            ...user,
-            friends: [...user.friends, currentUser]
-          };
-        }
-        return user;
+      if (!loggedInUser?.friends?.includes(friendId)) {
+        const { data } = await api.post(`http://localhost:3001/api/users/${currentUser}/friends`, {friendId}, {token});
+        console.log(data)
+        const updatedUser = users.find(user => user._id === currentUser);
+        setUpUser(updatedUser);
+      const isFollowing = updatedUser?.friends?.includes(friendId);
+      setFollowing(isFollowing);
+      setUsers(prevUsers => {
+        const updatedUsers = prevUsers.map(user => {
+          if (user._id === currentUser) {
+            return {
+              ...user,
+              friends: data.friends,
+            };
+          }
+          return user;
+        });
+        return updatedUsers;
       });
-      setUsers(updatedUsers);
-      
-      setFollowing(true);
-    } catch (error) {
-      console.log('API request failed:', error);
-    }
+      } else {
+        const { unfollowData } = await api.delete(`http://localhost:3001/api/users/${currentUser}/friends`, {friendId}, {token});
+        const unfollowUser = users.find(user => user._id === currentUser);
+        setUpUser(unfollowUser);
+      const isNotFollowing = unfollowUser?.friends?.includes(friendId);
+      setFollowing(isNotFollowing);
+      setUsers(prevUsers => {
+        const unfollowedUsers = prevUsers.map(user => {
+          if (user._id === currentUser) {
+            return {
+              ...user,
+              friends: unfollowData.friends,
+            };
+          }
+          return user;
+        });
+        return unfollowedUsers;
+      });
+      }
+     
+   
+  } catch (error) {
+    console.log(error);
+  }
      
   };
 
@@ -121,7 +156,7 @@ const Follow = () => {
         <CardActions>
         {Auth.loggedIn() && (
           <Button onClick={() => handleFollow(user._id)}>
-          {following || user.friends?.includes(currentUser)
+          { loggedInUser?.friends?.includes(user._id)
             ? 'Unfollow'
             : 'Follow'}
         </Button>

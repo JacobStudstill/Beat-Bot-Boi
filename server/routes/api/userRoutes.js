@@ -36,11 +36,11 @@ router.route('/:userId')
   .delete(authMiddleware, deleteUser);
 
    // /api/users/:userId/friends/:friendId
-router.route('/:userId/friends/:friendId')
+router.route('/:userId/friends')
 // POST to add a new friend to a user's friend list
-    .post(authMiddleware, addFriend)
+    .post(addFriend)
 // DELETE to remove a friend from a user's friend list
-    .delete(authMiddleware, deleteFriend)
+    .delete(deleteFriend)
 
 // export router so app can use it
 module.exports = router;

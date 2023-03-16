@@ -122,6 +122,7 @@ async updateUser(req, res) {
     async addFriend(req, res) {
       console.log(req.params.userId)
       console.log(req.params.friendId)
+      console.log(req.body)
   try {
     const user = await User.findOneAndUpdate(
       { _id: req.params.userId }, 

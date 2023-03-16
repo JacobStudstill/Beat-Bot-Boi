@@ -146,6 +146,8 @@ async deleteFriend(req, res) {
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
+  }
+},
     
     // Search user
   async searchUser(req, res) {
@@ -158,11 +160,9 @@ async deleteFriend(req, res) {
       res.status(500).json(err);
 
     }
-}
+  }
 
 }
-
-
 
 
 module.exports = userController;

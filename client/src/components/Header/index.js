@@ -96,7 +96,7 @@ function Header() {
             >
               {!user
                 ? loggedIn.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <MenuItem key={page} onClick={Auth.logout}>
                     <Typography textAlign="center">
                       {/* mobile nav dropdown */}
                       <Link style={{ textDecoration: "none", color: "black" }} to={`/${page}`}>{page}</Link>
@@ -104,7 +104,7 @@ function Header() {
                   </MenuItem>
                 ))
                 : loggedOut.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <MenuItem key={page} onClick={Auth.logout}>
                     <Typography textAlign="center">
                       {/* mobile nav dropdown */}
                       <Link style={{ textDecoration: "none", color: "black" }} to={`/${page}`}>{page}</Link>
@@ -146,7 +146,7 @@ function Header() {
               : loggedIn.map((page) => (
                 <Button
                   key={page}
-                  onClick={handleCloseNavMenu}
+                  onClick={Auth.logout}
                   sx={{ my: 2, color: 'black', display: 'block' }}
                 >
                   <Link style={{ textDecoration: "none", color: "white" }} to={`/${page}`}>{page}</Link>

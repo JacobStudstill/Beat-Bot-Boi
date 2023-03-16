@@ -97,6 +97,7 @@ border-radius: 5px;
   width:20%;
   margin-bottom: 20px;
   cursor: pointer;
+  align-items: center;
 }
 
 .friend img {

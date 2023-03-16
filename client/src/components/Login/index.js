@@ -97,12 +97,13 @@ export default function Login() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://images.pexels.com/photos/1337753/pexels-photo-1337753.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)',
+            backgroundImage: 'url(https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61LQNwFWRcL._AC_UF894,1000_QL80_.jpg)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
             backgroundSize: 'cover',
             backgroundPosition: 'center',
+            backgroundSize:'100%'
           }}
         />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>

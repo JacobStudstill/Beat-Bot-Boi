@@ -245,6 +245,7 @@ export default function PostDetail() {
           👎 {post.postDownvotes}
         </Button>
       </div>
+
       <h3>Comments ({comments.length})</h3>
       {comments.map((comment) => (
   <Comment key={comment._id} comment={comment} comments={comments} setComments={setComments} />

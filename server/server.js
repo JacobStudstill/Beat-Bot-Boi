@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 
-server.applyMiddleware({ app });
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -20,7 +20,7 @@ app.use(cors());
 // Import routes
 app.use(routes);
 
-app.use('/images', express.static(path.join(__dirname, '../client/assets')));
+app.use('/images', express.static(path.join(__dirname, '../client/src/assests')));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));

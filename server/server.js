@@ -6,15 +6,16 @@ const path = require('path')
 const cors = require('cors');
 const routes = require('./routes');
 const db = require('./config/connection');
-const app = express();
+
 const PORT = process.env.PORT || 3001;
+const app = express();
 
 
 server.applyMiddleware({ app });
 
-app.use(express.static('public'))
-app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 app.use(cors());
 // Import routes
 app.use(routes);

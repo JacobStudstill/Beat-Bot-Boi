@@ -1,6 +1,5 @@
 import {Routes, Route} from 'react-router'
 import Header from './components/Header';
-import Footer from './components/Footer';
 import Signup from './components/Signup';
 import Home from './components/Home';
 import Profile from './components/Profile/index';
@@ -13,7 +12,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import MessengerModal from './components/Message/DM';
 import Login from './components/Login';
 import Follow from './components/Follow'
-import SpotifyGetPlaylists from "./components/SpotifyGetPlaylists";
 import PostView from './components/Posts/view'
 import PostCreate from './components/Posts/create'
 

@@ -40,11 +40,11 @@ function Header() {
 
 
   const loggedIn = ['Home', 'Profile', 'Logout']
-  const loggedOut = ['Login']
+  const loggedOut = ['Login / Signup']
 
   return (
     <AppBar sx={{ bgcolor: "#BA8C63" }} position="static">
-      <Container maxWidth="">
+      <Container maxWidth="" sx={{xs: 'none', md: 'flex', justifyContent: "space-between"}}>
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -132,8 +132,19 @@ function Header() {
           >
             <img src={logo} className="navPhoto" alt="" />
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', } }}>
             {!user
+              ? loggedOut.map((page) => (
+                <p> </p>
+              ))
+              : loggedIn.map((page) => (
+                <p> </p>
+              ))}
+          </Box>
+
+          {/* Login / Signup Button */}
+          <Box sx={{ display: 'flex',justifyContent: 'center' , alignItems: 'flex-end'}}>
+          {!user
               ? loggedOut.map((page) => (
                 <Button
                   key={page}
@@ -152,12 +163,6 @@ function Header() {
                   <Link style={{ textDecoration: "none", color: "black" }} to={`/${page}`}>{page}</Link>
                 </Button>
               ))}
-          </Box>
-
-          {/* Search Bar */}
-          <Box sx={{ display: 'flex',justifyContent: 'center' , alignItems: 'flex-end', paddingBottom: 2.5 }}>
-            <SearchIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-            <TextField id="input-with-sx" label="Search" variant="standard" />
           </Box>
         </Toolbar>
       </Container>

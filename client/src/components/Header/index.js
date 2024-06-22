@@ -40,7 +40,7 @@ function Header() {
 
 
   const loggedIn = ['Home', 'Profile', 'Logout']
-  const loggedOut = ['Login / Signup']
+  const loggedOut = ['Login', 'Signup']
 
   return (
     <AppBar sx={{ bgcolor: "#BA8C63" }} position="static">
@@ -160,6 +160,8 @@ function Header() {
                   className={page}
                   sx={{ my: 2, color: 'black', display: 'block' }}
                 >
+                  <Link style={{ textDecoration: "none", color: "black" }} to={`/${page}`}>{page}</Link>
+                  <p>/</p>
                   <Link style={{ textDecoration: "none", color: "black" }} to={`/${page}`}>{page}</Link>
                 </Button>
               ))}

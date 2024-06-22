@@ -40,7 +40,7 @@ const Landing = () => {
               <p className="line__3">styles and types of music on this platform. When posting </p>
               <p className="line__4">your music, you can attach a genre for users to find you by.</p>
               <p className="line__5">Users will filter by genre on the homepage when searching</p>
-              <p className="line__6">for new artists. Niche or not, Anthym has you covered </p>
+              <p className="line__6">for new artists. Niche or not, Anthym has you covered. </p>
               <p className="line__7">Sincerly, Anthym Staff </p>
             </div>
 
